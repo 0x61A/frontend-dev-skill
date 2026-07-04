@@ -1,0 +1,47 @@
+id,name,display_font,body_font,utility_font,source,mood,best_for,avoid_when
+FP01,Editorial Contrast,Fraunces,Public Sans,,google,warm literary confident,editorial|craft|food|heritage brands,tech products wanting cold precision
+FP02,Instrument Duo,Instrument Serif,Instrument Sans,,google,contemporary editorial sharp,studios|portfolios|modern editorial,conservative corporate
+FP03,Bricolage Statement,Bricolage Grotesque,Source Sans 3,,google,characterful quirky modern,agencies|indie SaaS|community,formal legal/finance
+FP04,Space Age,Space Grotesk,DM Sans,JetBrains Mono,google,technical friendly modern,dev-tools|tech SaaS|data products,luxury or heritage subjects
+FP05,Garamond Authority,EB Garamond,Lato,,google,scholarly trustworthy calm,legal|academic|consulting|heritage,youth brands
+FP06,Clash Bold,Clash Display,Satoshi,,fontshare,confident startup loud,startups|launches|personal brands,dense reading experiences
+FP07,Cabinet System,Cabinet Grotesk,General Sans,,fontshare,neutral-plus with personality,SaaS|agencies|products,when Google Fonts CDN is required
+FP08,Zodiak Luxury,Zodiak,Supreme,,fontshare,high-contrast luxurious,fashion|jewelry|premium services,casual community subjects
+FP09,Gambetta Literary,Gambetta,Erode,,fontshare,bookish warm intellectual,publishing|culture|essays,tech precision subjects
+FP10,Syne Fashion,Syne,Manrope,,google,fashion-forward artsy wide,fashion|art|music|events,trust-critical services
+FP11,Bebas Impact,Bebas Neue,Source Sans 3,,google,condensed loud athletic,sports|fitness|automotive|events,gentle or premium-quiet subjects
+FP12,Barlow Athletics,Barlow Condensed,Barlow,,google,industrial sporty systematic,sports|logistics|manufacturing,literary subjects
+FP13,Mono Terminal,JetBrains Mono,IBM Plex Sans,,google,engineering precise honest,dev-tools|APIs|infrastructure,emotional consumer brands
+FP14,Plex Suite,IBM Plex Serif,IBM Plex Sans,IBM Plex Mono,google,systematic corporate-craft,fintech|enterprise|research,playful subjects
+FP15,Cormorant Grace,Cormorant Garamond,Libre Baskerville,,google,romantic classical refined,weddings|hotels|fine dining,tech or data subjects
+FP16,Bodoni Fashion,Bodoni Moda,Jost,,google,high-fashion sharp glamorous,fashion|beauty|magazines,friendly approachable brands
+FP17,Playfair Menu,Playfair Display,Karla,,google,classic hospitality warm,restaurants|cafes|boutique hotels,overused for luxury — check competitors first
+FP18,Lora Calm,Lora,Raleway,,google,soft wellness humane,wellness|therapy|yoga|nonprofits,bold energetic brands
+FP19,Crimson Academic,Crimson Pro,Atkinson Hyperlegible,,google,readable scholarly accessible,education|research|accessibility-first,visual-led brands
+FP20,Abril Retro,Abril Fatface,Merriweather,,google,vintage poster bold,heritage|barbershops|breweries,minimal modern directions
+FP21,Anton Punch,Anton,Epilogue,,google,gen-z loud compressed,streetwear|music|youth culture,professional services
+FP22,Archivo Studio,Archivo Black,Archivo,,google,swiss-poster strong,design studios|architecture|galleries,soft subjects
+FP23,Unbounded Web3,Unbounded,Manrope,,google,futuristic wide crypto,web3|gaming|future-tech,traditional sectors
+FP24,Orbitron HUD,Orbitron,Exo 2,Share Tech Mono,google,sci-fi technical HUD,gaming|simulation|space,anything non-tech
+FP25,Chakra Gaming,Russo One,Chakra Petch,,google,esports angular energetic,gaming|esports|streaming,calm professional subjects
+FP26,Amatic Craft,Amatic SC,Cabin,,google,handmade indie charming,crafts|markets|kids|cafes,corporate or luxury
+FP27,Caveat Note,Caveat,Quicksand,,google,handwritten personal warm,personal brands|education|food blogs,formal contexts (use as accent only)
+FP28,Cinzel Estate,Cinzel,Josefin Sans,,google,monumental classical premium,real estate|law|wine,casual brands
+FP29,Poiret Deco,Poiret One,Didact Gothic,,google,art-deco geometric elegant,events|salons|theaters,tech products
+FP30,Newsreader Press,Newsreader,Libre Franklin,,google,newspaper credible urgent,news|blogs|newsletters,product marketing
+FP31,Libre Bodoni Mag,Libre Bodoni,Public Sans,,google,magazine sharp editorial,magazines|columns|reviews,SaaS
+FP32,Figtree Health,Figtree,Noto Sans,,google,clean approachable clinical-warm,healthcare|clinics|insurance,edgy creative brands
+FP33,Lexend Focus,Lexend,Source Sans 3,,google,readable modern trustworthy,education|gov|b2b services,expressive creative work
+FP34,Outfit Geometric,Outfit,Work Sans,,google,geometric clean contemporary,products|SaaS|architecture,heritage subjects
+FP35,Sora Product,Sora,Hanken Grotesk,,google,techy soft-geometric,fintech|apps|platforms,editorial content
+FP36,Familjen Nordic,Familjen Grotesk,Schibsted Grotesk,,google,nordic pragmatic warm-neutral,services|consultancies|b2b,loud consumer brands
+FP37,Press Start Pixel,Press Start 2P,VT323,,google,8-bit retro playful,retro gaming|arcades|dev fun,body text of any length (accent only)
+FP38,Space Mono Brutal,Space Mono,Space Mono,,google,raw brutalist typewriter,brutalist|zines|experimental,readability-critical long text
+FP39,Lexend Mega Neubrutal,Lexend Mega,Public Sans,,google,neubrutalist wide loud,neubrutalism|bold consumer,subtle premium directions
+FP40,Syncopate Kinetic,Syncopate,Space Mono,,google,kinetic spaced futurist,motion-led heroes|tech events,body-heavy pages
+FP41,Great Vibes Romance,Great Vibes,Cormorant Infant,,google,script romantic ceremonial,weddings|invitations|florists,anything else (accent only)
+FP42,Baloo Kids,Baloo 2,Comic Neue,,google,rounded friendly playful,kids|toys|family services,adult professional services
+FP43,Righteous Beat,Righteous,Poppins,,google,music retro-groove bold,music|festivals|entertainment,corporate
+FP44,Fira Data,Fira Sans,Fira Sans,Fira Code,google,dashboard systematic legible,dashboards|analytics|monitoring,marketing pages
+FP45,Be Vietnam Localized,Be Vietnam Pro,Noto Sans,,google,multilingual modern neutral,Vietnamese/multi-script projects,—
+FP46,Noto TR-Safe,Noto Serif,Noto Sans,,google,full Turkish diacritic coverage safe,Turkish-language projects needing guaranteed coverage,when a more characterful TR-supporting face exists

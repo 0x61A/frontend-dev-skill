@@ -1,0 +1,57 @@
+id,axis,option,pairs_well_with,avoid_when
+AX01,value_scheme,Light-dominant: warm or cool white base with dark ink text,editorial|craft|health|legal,subject is nightlife/gaming/dev-tool where dark carries meaning
+AX02,value_scheme,Dark-dominant: layered near-black surfaces (3+ elevation steps not flat black),dev-tools|entertainment|luxury,content-heavy reading experiences; older audiences
+AX03,value_scheme,Paper: warm off-white with e-ink restraint and print-like rules,archives|literary|academic|craft,high-energy consumer brands
+AX04,value_scheme,Split/duotone: two large color fields dividing the page into zones,bold consumer|events|fashion,data-dense or form-heavy pages
+AX05,value_scheme,Mid-tone base: colored (not white not black) canvas e.g. deep olive/clay/slate,food|outdoors|culture,apps needing long text reading
+AX06,temperature,Warm: reds/ochres/browns/cream family,food|craft|hospitality|community,clinical or high-precision technical subjects
+AX07,temperature,Cool: blues/greens/slate family,finance|health|engineering,"warm human-touch subjects (childcare, food)"
+AX08,temperature,Neutral + one temperature spike: gray-led with a single hot or cold accent zone,portfolios|agencies|SaaS,when the whole page needs emotional warmth
+AX09,saturation,Muted throughout: dusty desaturated palette with tonal depth,wellness|premium services|editorial,youth/energy brands
+AX10,saturation,One saturated hero color used structurally (backgrounds/zones) not just links,consumer|events|education,conservative professional services
+AX11,saturation,High-key clash: 2-3 saturated colors deliberately colliding,gen-z|music|creative tools,"trust-critical sectors (legal, medical, finance)"
+AX12,geometry,Sharp: radius 0-2px with weight carried by borders and rules,industrial|brutalist|editorial,"friendly/soft subjects (kids, care)"
+AX13,geometry,Soft: radius 8-16px consistent scale,SaaS|education|health,luxury-minimal (reads consumer-generic)
+AX14,geometry,Pill/rounded-full on interactive + sharp on containers (mixed intentional),playful consumer|community,dense data UI
+AX15,geometry,Irregular: hand-drawn borders or asymmetric organic masks,craft|art|indie|food,corporate trust-forward pages
+AX16,texture,Flat solid fields with no decoration — precision spacing carries the design,swiss|luxury-minimal,when it slides into flat emptiness (see two-bar check)
+AX17,texture,Subtle grain/noise overlay on large color fields,photography|film|music|craft,data-heavy or accessibility-critical UI
+AX18,texture,Paper/print artifacts: registration marks/stamps/perforation motifs,archives|ticketing|zines|heritage,digital-native SaaS subjects
+AX19,texture,"Layered depth: overlapping elements with insets, badges, real shadows",e-commerce|editorial|portfolios,minimal directions
+AX20,texture,3D or dimensional renders as consistent illustration system,product-tech|gaming|web3,craft/human subjects where 3D reads cold
+AX21,density,Airy: generous negative space around fewer confident elements,luxury|portfolio|studio,content marketing pages needing depth signals for SEO
+AX22,density,Considered-dense: magazine density with strict grid discipline,news|community|marketplace,simple single-CTA landing pages
+AX23,density,Rhythmic: alternating airy hero moments with dense proof sections,SaaS|services|agencies,short single-viewport pages
+AX24,layout_skeleton,Asymmetric split: 40/60 or 30/70 vertical division with contrasting content types,portfolios|products|studios,mobile-majority audiences (test the collapse carefully)
+AX25,layout_skeleton,Editorial columns: multi-column article grid with pull elements crossing columns,content sites|magazines|blogs,app-like products
+AX26,layout_skeleton,Sidebar-anchored: fixed sidebar identity/navigation with scrolling canvas,portfolios|docs|catalogs,simple landing pages
+AX27,layout_skeleton,Diagonal flow: sections offset alternately left/right creating a zigzag reading path,agencies|events|storytelling,dense information pages
+AX28,layout_skeleton,Overlap stack: sections whose elements bleed into neighboring sections,fashion|creative|photography,forms and conversion-critical flows
+AX29,layout_skeleton,"Horizontal scroll chapter inside vertical page (one, deliberate, keyboard-accessible)",galleries|timelines|product tours,when a11y budget can't cover proper keyboard support
+AX30,layout_skeleton,Broken grid: items placed off-grid with intentional misalignment,art|music|indie,trust-critical or elderly-audience pages
+AX31,layout_skeleton,Color-block zoning: sections defined by full-bleed background color shifts not whitespace,bold consumer|education|events,subtle luxury directions
+AX32,layout_skeleton,Sticky-scroll narrative: pinned element that transforms while copy scrolls past,product stories|data stories,short pages; CWV budget tight (INP risk)
+AX33,type_voice,Serif authority: characterful display serif + neutral grotesk body,legal|editorial|heritage|finance,tech products wanting modern feel
+AX34,type_voice,Grotesk contrast: extreme weight/width contrast within one grotesk family,SaaS|studios|architecture,when it needs warmth
+AX35,type_voice,Mono-technical: monospace for labels/data/nav + humanist body,dev-tools|engineering|data products,emotional consumer subjects
+AX36,type_voice,Display-loud: hero type at 12-20vw as the primary visual element,agencies|events|personal brands,content-heavy pages
+AX37,type_voice,Condensed-impact: tall condensed display + wide-tracking caption system,sports|automotive|industrial,soft/gentle subjects
+AX38,type_voice,Script accent: one script/handwritten face used only for 2-3 word accents,weddings|food|craft,anything technical
+AX39,motion,Static: zero animation — composition alone carries the page,print-like|archival|brutalist,products that demo motion/interactivity
+AX40,motion,"Restrained: one signature easing curve, 2-3 orchestrated moments max",most professional subjects,never a bad default
+AX41,motion,"Orchestrated entrance: one page-load sequence, then calm",portfolios|studios|launches,content pages users revisit often
+AX42,motion,"Interactive-expressive: cursor-following, hover physics, canvas effects",creative tools|agencies|gaming,accessibility-critical or CWV-tight builds
+AX43,signature,Oversized typographic hero with deliberate line breaks doubling as navigation or image mask,type-led directions,image-led subjects
+AX44,signature,Custom cursor or cursor-following element on brand moments only,creative|portfolio,touch-majority audiences (provide fallback)
+AX45,signature,"Subject-derived motif system: an icon/shape from the subject's real world repeated as structure (coffee ring, blueprint line, vinyl groove, stitch pattern)",every sector — strongest general option,only when motif is genuinely derived not decorative
+AX46,signature,Interactive canvas moment: one WebGL/canvas element tied to the subject,tech|music|data,low-power devices; tight CWV budget
+AX47,signature,"Live/real element: actual data, real-time state, genuine artifact embedded (live availability, real reviews, actual menu)",services|restaurants|SaaS,when no real data exists — never fake it
+AX48,signature,"Image treatment system: one consistent unusual treatment (duotone, halftone, cut-out collage, irregular masks) across ALL imagery",photography-rich subjects,text-only pages
+AX49,signature,"Structural annotation: hand-drawn or technical annotations (arrows, margin notes, dimension lines) as a real wayfinding layer",education|craft|engineering,formal corporate tone
+AX50,signature,"Physical-world artifact skeuomorph: one element styled as a real object from the sector (ticket, receipt, luggage tag, prescription pad, polaroid)",hospitality|events|retail,digital-native abstract subjects
+AX51,imagery,Editorial photography full-bleed with consistent grade,food|travel|fashion|real estate,no-budget projects without good source imagery
+AX52,imagery,Duotone/tritone processed photography matching palette exactly,music|sports|events,when photo detail matters (product shots)
+AX53,imagery,"Illustration system: one consistent style, custom-feeling, never mixed",education|health|community,luxury (illustration reads casual)
+AX54,imagery,"Type-only: no imagery, typography and color carry everything",studios|law|consultancies,products needing visual proof
+AX55,imagery,"Cut-out/collage: subjects isolated from backgrounds, layered with shapes",youth|culture|magazines,clinical/precise subjects
+AX56,imagery,Abstract generative/geometric art derived from brand geometry,fintech|data|dev-tools,human-touch subjects
