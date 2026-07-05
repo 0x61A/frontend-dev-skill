@@ -49,6 +49,18 @@ Trigger it naturally:
 
 The skill then walks six phases: **brief intake → reference analysis → Design DNA → SEO foundation → build → self-critique loop**. It will ask 2–4 batched questions when the brief is underspecified, and states its assumptions when running autonomously.
 
+## Examples
+
+Three demos built end-to-end by the skill — same workflow, deliberately divergent Design DNA each time. See [`examples/`](examples/) for source.
+
+<table>
+<tr>
+<td width="33%"><a href="examples/komur-roastery/index.html"><img src="examples/komur-roastery/screenshot.png" alt="Kömür Roastery — coffee roastery demo"></a><br><sub><b>Kömür Roastery</b> — diagonal flow, warm umber, Fraunces</sub></td>
+<td width="33%"><a href="examples/sinyal-records/index.html"><img src="examples/sinyal-records/screenshot.png" alt="Sinyal Records — record label demo"></a><br><sub><b>Sinyal Records</b> — broken grid, split-duotone, Anton</sub></td>
+<td width="33%"><a href="examples/veriform/index.html"><img src="examples/veriform/screenshot.png" alt="Veriform — fintech infra demo"></a><br><sub><b>Veriform</b> — sidebar-anchored, dark mono, live ticker</sub></td>
+</tr>
+</table>
+
 ## Repository layout
 
 ```
