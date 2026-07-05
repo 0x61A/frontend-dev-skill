@@ -51,13 +51,18 @@ The skill then walks six phases: **brief intake → reference analysis → Desig
 
 ## Examples
 
-Three demos built end-to-end by the skill — same workflow, deliberately divergent Design DNA each time. See [`examples/`](examples/) for source.
+Six demos built end-to-end by the skill — same workflow, deliberately divergent Design DNA and layout skeleton every time. See [`examples/`](examples/) for source and the full breakdown of what makes each one different.
 
 <table>
 <tr>
 <td width="33%"><a href="examples/komur-roastery/index.html"><img src="examples/komur-roastery/screenshot.png" alt="Kömür Roastery — coffee roastery demo"></a><br><sub><b>Kömür Roastery</b> — diagonal flow, warm umber, Fraunces</sub></td>
 <td width="33%"><a href="examples/sinyal-records/index.html"><img src="examples/sinyal-records/screenshot.png" alt="Sinyal Records — record label demo"></a><br><sub><b>Sinyal Records</b> — broken grid, split-duotone, Anton</sub></td>
 <td width="33%"><a href="examples/veriform/index.html"><img src="examples/veriform/screenshot.png" alt="Veriform — fintech infra demo"></a><br><sub><b>Veriform</b> — sidebar-anchored, dark mono, live ticker</sub></td>
+</tr>
+<tr>
+<td width="33%"><a href="examples/dipnot/index.html"><img src="examples/dipnot/screenshot.png" alt="Dipnot — independent bookstore demo"></a><br><sub><b>Dipnot</b> — editorial columns, paper tone, Newsreader, zero motion</sub></td>
+<td width="33%"><a href="examples/tutamak/index.html"><img src="examples/tutamak/screenshot.png" alt="Tutamak — bouldering gym demo"></a><br><sub><b>Tutamak</b> — color-block zoning, concrete + orange, Barlow</sub></td>
+<td width="33%"><a href="examples/kama-atolye/index.html"><img src="examples/kama-atolye/screenshot.png" alt="Kama Atölye — furniture joinery demo"></a><br><sub><b>Kama Atölye</b> — sticky-scroll narrative, walnut accent, Archivo Black</sub></td>
 </tr>
 </table>
 

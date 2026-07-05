@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutamak — Kadıköy Bulderlama Salonu</title>
+<meta name="description" content="Tutamak, Kadıköy'de bulderlama (bouldering) salonu. Güncel rota panosu, deneme dersi ve haftalık program.">
+<meta property="og:title" content="Tutamak Bulderlama">
+<meta property="og:description" content="Kadıköy'de bulderlama salonu — güncel rota panosu ve deneme dersi.">
+<meta name="theme-color" content="#2A2C2B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "Tutamak Bulderlama Salonu",
+  "address": { "@type": "PostalAddress", "addressLocality": "Kadıköy", "addressRegion": "İstanbul", "addressCountry": "TR" }
+}
+</script>
+<style>
+  :root{
+    /* Design DNA — Tutamak. Color-block zoning skeleton: full-bleed background
+       shifts define sections, not whitespace. Signature is an angular topo/route
+       line — deliberately NOT a circular disc, to stay clear of Kömür/Sinyal's
+       hero-circle look. */
+    --beton: #3D3F3E;
+    --beton-koyu: #2A2C2B;
+    --tebesir: #F2F0EA;
+    --tutamak-turuncu: #FF5A1F; /* the one saturated hero color, used structurally */
+    --murekkep: #171918;
+
+    --font-display:'Barlow Condensed', sans-serif;
+    --font-body:'Barlow', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; font-family:var(--font-body); color:var(--tebesir); background:var(--beton-koyu); line-height:1.6; -webkit-font-smoothing:antialiased;}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition-duration:0.001ms !important;} }
+  a{color:inherit;} :focus-visible{outline:3px solid var(--tutamak-turuncu); outline-offset:2px;}
+
+  header{
+    position:sticky; top:0; z-index:10; display:flex; justify-content:space-between; align-items:center;
+    padding:1.1rem clamp(1.25rem,5vw,3rem); background:var(--beton-koyu); border-bottom:1px solid rgba(242,240,234,0.12);
+  }
+  .brand{font-family:var(--font-display); font-weight:700; font-size:1.4rem; text-transform:uppercase; letter-spacing:0.02em; text-decoration:none;}
+  nav ul{display:flex; gap:clamp(1rem,3vw,2rem); list-style:none; margin:0; padding:0; flex-wrap:wrap;}
+  nav a{text-decoration:none; font-family:var(--font-display); font-weight:600; text-transform:uppercase; font-size:0.85rem; letter-spacing:0.03em;}
+  nav a:hover{color:var(--tutamak-turuncu);}
+
+  /* Zone 1 — dark hero, topo-line signature (not a circle) */
+  .zone-hero{background:var(--beton-koyu); padding:clamp(3rem,8vw,6rem) clamp(1.25rem,6vw,4rem) 0; overflow:hidden;}
+  .hero-text{max-width:900px; margin:0 auto; text-align:center;}
+  .kicker{font-family:var(--font-display); font-weight:600; text-transform:uppercase; letter-spacing:0.12em; color:var(--tutamak-turuncu); font-size:0.9rem; margin-bottom:1rem;}
+  h1{
+    font-family:var(--font-display); font-weight:700; text-transform:uppercase; letter-spacing:0.01em;
+    font-size:clamp(3rem,9vw,6.5rem); line-height:0.92; margin:0 0 1.5rem;
+  }
+  .hero-text p{max-width:48ch; margin:0 auto 2rem; opacity:0.8; font-size:1.05rem;}
+  .cta-row{display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:2.5rem;}
+  .btn{
+    font-family:var(--font-display); font-weight:700; text-transform:uppercase; letter-spacing:0.03em;
+    padding:0.9rem 2rem; border-radius:999px; text-decoration:none; font-size:1rem;
+  }
+  .btn-primary{background:var(--tutamak-turuncu); color:var(--murekkep);}
+  .btn-ghost{border:2px solid var(--tebesir); color:var(--tebesir);}
+
+  .topo{display:block; width:100%; height:auto; max-width:1100px; margin:0 auto;}
+
+  .stat-strip{
+    display:flex; justify-content:center; gap:clamp(1.5rem,5vw,4rem); flex-wrap:wrap;
+    padding:1.5rem 1.25rem 3rem; max-width:1000px; margin:0 auto;
+  }
+  .stat-strip div{text-align:center;}
+  .stat-strip .num{font-family:var(--font-display); font-weight:700; font-size:2.2rem; color:var(--tutamak-turuncu);}
+  .stat-strip .label{font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; opacity:0.7;}
+
+  /* Zone 2 — chalk white full-bleed, route board (dense proof section) */
+  .zone-board{background:var(--tebesir); color:var(--murekkep); padding:clamp(3rem,7vw,5rem) clamp(1.25rem,6vw,4rem);}
+  .zone-inner{max-width:1100px; margin:0 auto;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1rem; margin-bottom:2.5rem;}
+  h2{font-family:var(--font-display); font-weight:700; text-transform:uppercase; font-size:clamp(2rem,4vw,2.8rem); margin:0;}
+  .route-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1.5rem;}
+  .route-card{
+    background:var(--beton-koyu); color:var(--tebesir); border-radius:14px; padding:1.5rem;
+    display:flex; flex-direction:column; gap:0.75rem;
+  }
+  .grade{
+    display:inline-flex; align-self:flex-start; font-family:var(--font-display); font-weight:700;
+    background:var(--tutamak-turuncu); color:var(--murekkep); padding:0.25rem 0.75rem; border-radius:999px; font-size:0.85rem;
+  }
+  .route-card h3{margin:0; font-family:var(--font-display); font-weight:600; font-size:1.3rem; text-transform:none;}
+  .route-card p{margin:0; font-size:0.88rem; opacity:0.75;}
+
+  /* Zone 3 — dark, program table */
+  .zone-program{background:var(--beton); padding:clamp(3rem,7vw,5rem) clamp(1.25rem,6vw,4rem);}
+  table{width:100%; border-collapse:collapse; max-width:900px; margin:0 auto;}
+  th, td{text-align:left; padding:0.85rem 1rem; border-bottom:1px solid rgba(242,240,234,0.15); font-size:0.92rem;}
+  th{font-family:var(--font-display); text-transform:uppercase; letter-spacing:0.05em; font-size:0.78rem; opacity:0.6; font-weight:600;}
+  td.day{font-family:var(--font-display); font-weight:600; font-size:1.05rem;}
+
+  /* Zone 4 — orange full-bleed CTA block */
+  .zone-cta{background:var(--tutamak-turuncu); color:var(--murekkep); padding:clamp(3rem,8vw,5rem) 1.5rem; text-align:center;}
+  .zone-cta h2{margin:0 0 1rem;}
+  .zone-cta p{max-width:44ch; margin:0 auto 2rem; font-size:1.05rem;}
+  .zone-cta .btn-primary{background:var(--murekkep); color:var(--tutamak-turuncu);}
+
+  footer{background:var(--beton-koyu); padding:2rem clamp(1.25rem,6vw,4rem); display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; font-size:0.85rem; opacity:0.65;}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="#top">Tutamak</a>
+  <nav aria-label="Ana menü">
+    <ul>
+      <li><a href="#pano">Rota Panosu</a></li>
+      <li><a href="#program">Program</a></li>
+      <li><a href="#deneme">Deneme Dersi</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="zone-hero">
+    <div class="hero-text">
+      <p class="kicker">Kadıköy · Bulderlama Salonu</p>
+      <h1>Duvar<br>seni tanır</h1>
+      <p>42 aktif rota, haftada iki kez yenilenen tahta. İlk deneme dersi ekipman dahil, ayakkabı bizden.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#deneme">Deneme dersi ayırt</a>
+        <a class="btn btn-ghost" href="#pano">Rota panosunu gör</a>
+      </div>
+    </div>
+    <svg class="topo" viewBox="0 0 1100 140" preserveAspectRatio="none" aria-hidden="true">
+      <polyline points="0,110 90,110 140,60 210,60 260,95 340,95 380,30 460,30 500,80 600,80 640,45 720,45 760,100 860,100 900,55 980,55 1020,90 1100,90"
+        fill="none" stroke="#FF5A1F" stroke-width="3" stroke-linejoin="round"/>
+      <g fill="#F2F0EA">
+        <circle cx="140" cy="60" r="4"/><circle cx="380" cy="30" r="4"/><circle cx="640" cy="45" r="4"/><circle cx="900" cy="55" r="4"/>
+      </g>
+    </svg>
+    <div class="stat-strip">
+      <div><div class="num">42</div><div class="label">Aktif rota</div></div>
+      <div><div class="num">12m</div><div class="label">Duvar yüksekliği</div></div>
+      <div><div class="num">6/7</div><div class="label">Gün açık</div></div>
+    </div>
+  </section>
+
+  <section class="zone-board" id="pano">
+    <div class="zone-inner">
+      <div class="section-head">
+        <h2>Güncel Rota Panosu</h2>
+        <span style="font-family:var(--font-display); text-transform:uppercase; font-size:0.8rem; opacity:0.6;">Bu hafta yenilendi</span>
+      </div>
+      <div class="route-grid">
+        <article class="route-card"><span class="grade">V2</span><h3>Sarı Traverse</h3><p>Sol duvar boyunca yatay, tutamaklar geniş. Yeni başlayan için ideal.</p></article>
+        <article class="route-card"><span class="grade">V4</span><h3>Kırık Tavan</h3><p>Ters eğimli bölüm, karın kilidi gerektiriyor.</p></article>
+        <article class="route-card"><span class="grade">V6</span><h3>İnce Kenar</h3><p>Parmak ucu tutamaklar, denge üzerine kurulu.</p></article>
+        <article class="route-card"><span class="grade">V3</span><h3>Köşe Dönüşü</h3><p>90 derece dönüş, adım değişimi kritik.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="zone-program" id="program">
+    <div class="zone-inner">
+      <div class="section-head"><h2>Haftalık Program</h2></div>
+      <table>
+        <thead><tr><th>Gün</th><th>Saat</th><th>İçerik</th></tr></thead>
+        <tbody>
+          <tr><td class="day">Salı</td><td>19:00</td><td>Başlangıç tekniği</td></tr>
+          <tr><td class="day">Perşembe</td><td>19:00</td><td>Rota çözme atölyesi</td></tr>
+          <tr><td class="day">Cumartesi</td><td>11:00</td><td>Açık tahta, tüm seviyeler</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="zone-cta" id="deneme">
+    <h2>İlk tırmanışın bizden</h2>
+    <p>Deneme dersine ayakkabı ve emniyet ekipmanı dahil, kayıt gerekmiyor.</p>
+    <form onsubmit="event.preventDefault(); this.reset(); alert('Kayıt alındı, salonda görüşürüz.');" style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
+      <input type="tel" placeholder="telefon numarası" required style="padding:0.9rem 1.2rem; border-radius:999px; border:none; font-family:var(--font-body); min-width:220px;">
+      <button class="btn btn-primary" type="submit" style="border:none; cursor:pointer;">Gönder</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 Tutamak Bulderlama</span>
+  <span>Kadıköy, İstanbul</span>
+</footer>
+
+</body>
+</html>
