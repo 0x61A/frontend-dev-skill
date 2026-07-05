@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gece Sineması — Ankara'da Açık Hava Yazlık Sinema</title>
+<meta name="description" content="Gece Sineması, Ankara Seğmenler Parkı'nda Haziran–Eylül arası açık hava sinema. Haftalık program, 35mm geceleri, battaniye kiralık.">
+<meta property="og:title" content="Gece Sineması">
+<meta property="og:description" content="Seğmenler'de açık hava yazlık sinema — haftalık program, 35mm geceleri.">
+<meta name="theme-color" content="#241226">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Didact+Gothic&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MovieTheater",
+  "name": "Gece Sineması",
+  "address": { "@type": "PostalAddress", "addressLocality": "Ankara", "addressRegion": "Çankaya", "addressCountry": "TR" },
+  "openingHours": "Th-Su 20:30-24:00"
+}
+</script>
+<style>
+  :root{
+    /* Design DNA — Gece Sineması. Deep plum night + brass marquee, band-stack hero (AX63),
+       one deliberate horizontal program strip (AX29, keyboard-accessible), letterboard signature (AX50). */
+    --gece-eflatun: #241226;   /* deep plum night: base */
+    --perde-morlugu: #35193A;  /* screen-dusk plum: elevated band */
+    --pirinc: #C9A227;         /* brass marquee: structural accent */
+    --perde-gumusu: #D9D4C8;   /* screen silver: text */
+    --lamba-sicagi: #E8C56A;   /* warm bulb: glow accents */
+    --murekkep: #17091A;
+
+    --font-display:'Poiret One', sans-serif;
+    --font-body:'Didact Gothic', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--gece-eflatun); color:var(--perde-gumusu); font-family:var(--font-body); line-height:1.65; -webkit-font-smoothing:antialiased;}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition-duration:0.001ms !important;} }
+  a{color:inherit;} :focus-visible{outline:3px solid var(--pirinc); outline-offset:3px;}
+
+  header{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; row-gap:0.5rem;
+    padding:1.2rem clamp(1.25rem,5vw,3rem);
+    border-bottom:1px solid rgba(201,162,39,0.4);
+  }
+  .brand{font-family:var(--font-display); font-size:1.5rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--pirinc);}
+  nav ul{display:flex; gap:clamp(1rem,3vw,2rem); list-style:none; margin:0; padding:0; flex-wrap:wrap;}
+  nav a{text-decoration:none; font-size:0.92rem; letter-spacing:0.04em; white-space:nowrap;}
+  nav a:hover{color:var(--lamba-sicagi);}
+
+  /* Hero — horizontal band stack: stacked full-width strips like a cinema letterboard wall */
+  .band{width:100%; padding:clamp(1rem,2.6vw,1.8rem) clamp(1.25rem,5vw,3rem); border-bottom:1px solid rgba(201,162,39,0.35);}
+  .band-title{background:var(--gece-eflatun); text-align:center; padding-top:clamp(2rem,5vw,3.5rem);}
+  .band-title .kicker{font-size:0.78rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--lamba-sicagi); margin:0 0 1rem;}
+  h1{
+    font-family:var(--font-display); font-weight:400; letter-spacing:0.06em;
+    font-size:clamp(2.6rem,8vw,5.6rem); line-height:1.02; margin:0;
+    color:var(--perde-gumusu);
+  }
+  h1 .brass{color:var(--pirinc);}
+  .band-sub{background:var(--perde-morlugu); text-align:center; font-size:1.02rem;}
+  .band-sub p{max-width:56ch; margin:0 auto; opacity:0.85;}
+  .band-marquee{
+    background:var(--murekkep); text-align:center;
+    font-family:var(--font-display); letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--lamba-sicagi); font-size:clamp(0.9rem,2.4vw,1.25rem);
+  }
+  .band-marquee .dot{color:var(--pirinc); margin:0 0.6rem;}
+  .band-cta{background:var(--gece-eflatun); text-align:center;}
+  .cta{
+    display:inline-block; background:var(--pirinc); color:var(--murekkep); font-weight:700;
+    padding:0.95rem 2.2rem; border-radius:2px; text-decoration:none; letter-spacing:0.04em;
+    box-shadow:0 0 24px rgba(201,162,39,0.35);
+  }
+  .cta:hover{background:var(--lamba-sicagi);}
+
+  section{padding:clamp(2.5rem,7vw,5rem) clamp(1.25rem,5vw,3rem);}
+  .section-head{max-width:56ch; margin-bottom:2rem;}
+  .kicker{font-size:0.78rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--lamba-sicagi); margin:0 0 0.6rem;}
+  h2{font-family:var(--font-display); font-weight:400; letter-spacing:0.05em; font-size:clamp(1.8rem,4vw,2.7rem); margin:0 0 0.5rem; color:var(--perde-gumusu);}
+  .section-head p{opacity:0.75; margin:0;}
+
+  /* Program — the one deliberate horizontal scroll chapter (keyboard accessible) */
+  .film-strip{
+    display:flex; gap:1.25rem; overflow-x:auto; padding:0.5rem 0.25rem 1.25rem;
+    scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+    scrollbar-color:var(--pirinc) var(--perde-morlugu);
+  }
+  .film-strip:focus-visible{outline:3px solid var(--pirinc); outline-offset:4px;}
+  .film-card{
+    flex:0 0 min(280px,78vw); scroll-snap-align:start;
+    background:var(--perde-morlugu); border:1px solid rgba(201,162,39,0.35); border-radius:4px;
+    overflow:hidden; display:flex; flex-direction:column;
+  }
+  .film-card .poster{
+    aspect-ratio:16/10; display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-size:1.3rem; letter-spacing:0.1em; color:var(--murekkep);
+  }
+  .film-card .info{padding:1.1rem 1.25rem;}
+  .film-card h3{font-family:var(--font-display); font-weight:400; letter-spacing:0.04em; font-size:1.25rem; margin:0 0 0.3rem; color:var(--perde-gumusu);}
+  .film-card .meta{font-size:0.8rem; opacity:0.65; margin:0 0 0.6rem;}
+  .film-card .tag{display:inline-block; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; border:1px solid var(--pirinc); color:var(--pirinc); padding:0.2rem 0.55rem; border-radius:999px;}
+  .strip-hint{font-size:0.78rem; opacity:0.5; margin-top:0.25rem;}
+
+  /* Signature — letterboard */
+  .letterboard{
+    background:var(--murekkep); border:2px solid var(--pirinc); border-radius:6px;
+    padding:clamp(1.5rem,4vw,2.5rem); max-width:760px; margin:0 auto;
+    box-shadow:0 0 40px rgba(201,162,39,0.18), inset 0 0 30px rgba(0,0,0,0.6);
+  }
+  .letterboard .row{
+    display:flex; flex-wrap:wrap; gap:0.4rem; justify-content:center; margin-bottom:0.6rem;
+  }
+  .letterboard .cell{
+    font-family:var(--font-display); font-size:clamp(1rem,2.6vw,1.5rem); letter-spacing:0.05em;
+    background:#231a24; color:var(--perde-gumusu); border-radius:2px;
+    min-width:1.6em; padding:0.25em 0.15em; text-align:center; text-transform:uppercase;
+    border-bottom:2px solid rgba(201,162,39,0.4);
+  }
+  .letterboard .cell.gap{background:transparent; border:none;}
+  .letterboard .cell.brass{color:var(--lamba-sicagi);}
+  .board-note{text-align:center; font-size:0.8rem; opacity:0.55; margin-top:1rem;}
+
+  /* Bilgi bandı */
+  .info-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1px; background:rgba(201,162,39,0.35); border:1px solid rgba(201,162,39,0.35); max-width:900px; margin:0 auto;}
+  .info-grid div{background:var(--gece-eflatun); padding:1.4rem;}
+  .info-grid b{display:block; font-family:var(--font-display); letter-spacing:0.06em; font-size:1.05rem; color:var(--pirinc); margin-bottom:0.3rem;}
+  .info-grid p{margin:0; font-size:0.9rem; opacity:0.8;}
+
+  footer{padding:2rem clamp(1.25rem,5vw,3rem); border-top:1px solid rgba(201,162,39,0.4); display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.75rem; font-size:0.85rem; opacity:0.7;}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="#top">Gece Sineması</a>
+  <nav aria-label="Ana menü">
+    <ul>
+      <li><a href="#program">Bu Hafta</a></li>
+      <li><a href="#pano">Pano</a></li>
+      <li><a href="#bilgi">Nasıl Çalışır</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <section aria-label="Giriş" style="padding:0;">
+    <div class="band band-title">
+      <p class="kicker">Seğmenler Parkı · Haziran–Eylül</p>
+      <h1>Perde, hava<br>karardığında <span class="brass">açılır.</span></h1>
+    </div>
+    <div class="band band-sub">
+      <p>Çim amfide açık hava sinema. Perşembe klasikler, Cuma yeni gösterim, Cumartesi 35mm gecesi, Pazar sessiz film + canlı piyano.</p>
+    </div>
+    <div class="band band-marquee" aria-label="Bu akşamın seansı">
+      BU AKŞAM <span class="dot">●</span> 21:15 <span class="dot">●</span> ÇİM AMFİ <span class="dot">●</span> BATTANİYE KİRALIK
+    </div>
+    <div class="band band-cta">
+      <a class="cta" href="#program">Bu haftanın programı</a>
+    </div>
+  </section>
+
+  <section id="program" aria-labelledby="program-h">
+    <div class="section-head">
+      <p class="kicker">Hafta Programı</p>
+      <h2 id="program-h">Dört gece, dört film</h2>
+      <p>Şerit yatay kayar — ok tuşlarıyla da gezilir.</p>
+    </div>
+    <div class="film-strip" tabindex="0" role="region" aria-label="Haftalık film programı, yatay kaydırılabilir liste">
+      <article class="film-card">
+        <div class="poster" style="background:linear-gradient(150deg,#C9A227,#8a6d1a);">PER</div>
+        <div class="info">
+          <h3>Klasik Gecesi</h3>
+          <p class="meta">Perşembe · 21:15 · 118 dk</p>
+          <span class="tag">Restore kopya</span>
+        </div>
+      </article>
+      <article class="film-card">
+        <div class="poster" style="background:linear-gradient(150deg,#E8C56A,#a5843a);">CUM</div>
+        <div class="info">
+          <h3>Yeni Gösterim</h3>
+          <p class="meta">Cuma · 21:15 · 104 dk</p>
+          <span class="tag">Ankara prömiyeri</span>
+        </div>
+      </article>
+      <article class="film-card">
+        <div class="poster" style="background:linear-gradient(150deg,#D9D4C8,#8f8a7e);">CMT</div>
+        <div class="info">
+          <h3>35mm Gecesi</h3>
+          <p class="meta">Cumartesi · 21:30 · 96 dk</p>
+          <span class="tag">Projeksiyonist anlatımlı</span>
+        </div>
+      </article>
+      <article class="film-card">
+        <div class="poster" style="background:linear-gradient(150deg,#35193A,#241226); color:#D9D4C8;">PAZ</div>
+        <div class="info">
+          <h3>Sessiz Film + Piyano</h3>
+          <p class="meta">Pazar · 21:00 · 82 dk</p>
+          <span class="tag">Canlı müzik</span>
+        </div>
+      </article>
+    </div>
+    <p class="strip-hint">Bilet gişede — kapasite 240 kişi, yağmur iptalinde bilet ertesi haftaya geçer.</p>
+  </section>
+
+  <section id="pano" aria-labelledby="pano-h">
+    <div class="section-head" style="text-align:center; margin-inline:auto;">
+      <p class="kicker">İmza · Harf Panosu</p>
+      <h2 id="pano-h">Girişteki pano</h2>
+    </div>
+    <div class="letterboard" role="img" aria-label="Harf panosu: Cumartesi 21:30, 35 milimetre gecesi">
+      <div class="row">
+        <span class="cell">C</span><span class="cell">M</span><span class="cell">T</span>
+        <span class="cell gap"></span>
+        <span class="cell brass">2</span><span class="cell brass">1</span><span class="cell brass">:</span><span class="cell brass">3</span><span class="cell brass">0</span>
+      </div>
+      <div class="row">
+        <span class="cell">3</span><span class="cell">5</span><span class="cell">M</span><span class="cell">M</span>
+        <span class="cell gap"></span>
+        <span class="cell">G</span><span class="cell">E</span><span class="cell">C</span><span class="cell">E</span><span class="cell">S</span><span class="cell">İ</span>
+      </div>
+      <p class="board-note">Harfler her akşam elle dizilir — pano neyse, perde odur.</p>
+    </div>
+  </section>
+
+  <section id="bilgi" aria-labelledby="bilgi-h">
+    <div class="section-head" style="text-align:center; margin-inline:auto;">
+      <p class="kicker">Pratik</p>
+      <h2 id="bilgi-h">Nasıl çalışır</h2>
+    </div>
+    <div class="info-grid">
+      <div><b>Gişe</b><p>Seans günü 19:30'da açılır, nakit + kart. Kapasite 240; rezervasyon yok, sıra var.</p></div>
+      <div><b>Zemin</b><p>Çim amfi — battaniye kiralık (₺40), minder serbest, sandalye arka sıraya.</p></div>
+      <div><b>Yağmur</b><p>Seans saatinde yağıyorsa iptal; bilet aynı günün ertesi haftasına geçer.</p></div>
+      <div><b>Büfe</b><p>Mısır makinesi ve gazoz dolabı parkın büfesinde — dışarıdan yiyecek serbest.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 Gece Sineması — Seğmenler Parkı, Çankaya, Ankara</span>
+  <span>Haziran–Eylül · Per–Paz</span>
+</footer>
+
+<script>
+  // Keyboard support for the horizontal program strip (AX29 requirement)
+  const strip = document.querySelector('.film-strip');
+  strip.addEventListener('keydown', (e) => {
+    const step = 300;
+    if (e.key === 'ArrowRight') { strip.scrollBy({left: step, behavior:'smooth'}); e.preventDefault(); }
+    if (e.key === 'ArrowLeft')  { strip.scrollBy({left: -step, behavior:'smooth'}); e.preventDefault(); }
+  });
+</script>
+
+</body>
+</html>

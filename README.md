@@ -53,7 +53,7 @@ The skill then walks six phases: **brief intake → reference analysis → Desig
 
 ## Examples
 
-Six demos built end-to-end by the skill — same workflow, deliberately divergent Design DNA and layout skeleton every time. See [`examples/`](examples/) for source and the full breakdown of what makes each one different.
+Nine demos built end-to-end by the skill — same workflow, deliberately divergent Design DNA and layout skeleton every time (the last three built under v1.1's hero-composition axis + design-log check). See [`examples/`](examples/) for source and the full breakdown of what makes each one different.
 
 <table>
 <tr>
@@ -65,6 +65,11 @@ Six demos built end-to-end by the skill — same workflow, deliberately divergen
 <td width="33%"><a href="examples/dipnot/index.html"><img src="examples/dipnot/screenshot.png" alt="Dipnot — independent bookstore demo"></a><br><sub><b>Dipnot</b> — editorial columns, paper tone, Newsreader, zero motion</sub></td>
 <td width="33%"><a href="examples/tutamak/index.html"><img src="examples/tutamak/screenshot.png" alt="Tutamak — bouldering gym demo"></a><br><sub><b>Tutamak</b> — color-block zoning, concrete + orange, Barlow</sub></td>
 <td width="33%"><a href="examples/kama-atolye/index.html"><img src="examples/kama-atolye/screenshot.png" alt="Kama Atölye — furniture joinery demo"></a><br><sub><b>Kama Atölye</b> — sticky-scroll narrative, walnut accent, Archivo Black</sub></td>
+</tr>
+<tr>
+<td width="33%"><a href="examples/menekse-cicekcilik/index.html"><img src="examples/menekse-cicekcilik/screenshot.png" alt="Menekşe Çiçekçilik — florist demo"></a><br><sub><b>Menekşe Çiçekçilik</b> — overlap stack, offset collage, botanical green</sub></td>
+<td width="33%"><a href="examples/poyraz-yelken/index.html"><img src="examples/poyraz-yelken/screenshot.png" alt="Poyraz Yelken — sailing school demo"></a><br><sub><b>Poyraz Yelken</b> — asymmetric split, split-screen hero, marine white/navy</sub></td>
+<td width="33%"><a href="examples/gece-sinemasi/index.html"><img src="examples/gece-sinemasi/screenshot.png" alt="Gece Sineması — open-air cinema demo"></a><br><sub><b>Gece Sineması</b> — band-stack hero, horizontal strip, plum + brass</sub></td>
 </tr>
 </table>
 

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menekşe Çiçekçilik — Moda'da El Bağı Buket Atölyesi</title>
+<meta name="description" content="Menekşe, Kadıköy Moda'da mevsim çiçeğiyle çalışan el bağı buket atölyesi. Haftalık taze liste, aynı gün Kadıköy içi teslim.">
+<meta property="og:title" content="Menekşe Çiçekçilik">
+<meta property="og:description" content="Moda'da mevsim çiçeğiyle el bağı buket. Aynı gün Kadıköy içi teslim.">
+<meta name="theme-color" content="#2E4B3A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Florist",
+  "name": "Menekşe Çiçekçilik",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Moda Cd. 118/A",
+    "addressLocality": "İstanbul",
+    "addressRegion": "Kadıköy",
+    "addressCountry": "TR"
+  },
+  "openingHours": "Tu-Su 10:00-19:00"
+}
+</script>
+<style>
+  :root{
+    /* Design DNA — Menekşe. Mid-tone botanical green canvas (AX05), overlap-stack
+       skeleton (AX28), offset-collage hero (AX62), annotation signature (AX49). */
+    --sera-yesili: #2E4B3A;    /* greenhouse green: base canvas */
+    --yaprak-koyu: #223A2C;    /* dark leaf: lower zones */
+    --petal-pembe: #E8A0B4;    /* petal pink: primary accent */
+    --krem-kagit: #F4EFE6;     /* wrap-paper cream: cards/ink surfaces */
+    --toprak: #6B4A36;         /* potting soil: secondary accent */
+    --murekkep: #1C2620;
+
+    --font-display:'DM Serif Display', serif;
+    --font-body:'DM Sans', sans-serif;
+    --ease-stem: cubic-bezier(0.34,1.2,0.64,1);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--sera-yesili); color:var(--krem-kagit); font-family:var(--font-body); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition-duration:0.001ms !important;} }
+  a{color:inherit;} :focus-visible{outline:3px solid var(--petal-pembe); outline-offset:3px;}
+
+  header{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; row-gap:0.5rem;
+    padding:1.25rem clamp(1.25rem,5vw,3rem); position:relative; z-index:5;
+  }
+  .brand{font-family:var(--font-display); font-size:1.5rem; text-decoration:none; font-style:italic;}
+  nav ul{display:flex; gap:clamp(1rem,3vw,2rem); list-style:none; margin:0; padding:0; flex-wrap:wrap;}
+  nav a{text-decoration:none; font-size:0.9rem; font-weight:500; white-space:nowrap; border-bottom:1px solid transparent;}
+  nav a:hover{border-color:var(--petal-pembe);}
+
+  /* Hero — offset collage: elements at broken positions, overlapping */
+  .hero{position:relative; min-height:88vh; padding:clamp(2rem,6vw,4rem) clamp(1.25rem,6vw,4rem); overflow:hidden;}
+  .hero h1{
+    font-family:var(--font-display); font-weight:400; font-size:clamp(2.6rem,6.5vw,5rem);
+    line-height:1.02; margin:0; max-width:13ch; position:relative; z-index:3;
+  }
+  .hero h1 em{font-style:italic; color:var(--petal-pembe);}
+  .hero .kicker{font-size:0.8rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--petal-pembe); font-weight:700; margin:0 0 1rem;}
+  .hero p.lede{max-width:40ch; opacity:0.85; position:relative; z-index:3; margin:1.5rem 0 2rem;}
+  .cta{
+    display:inline-block; background:var(--petal-pembe); color:var(--murekkep); font-weight:700;
+    padding:0.9rem 1.7rem; border-radius:3px 18px 3px 18px; text-decoration:none;
+    position:relative; z-index:3; transition:transform 0.25s var(--ease-stem);
+  }
+  .cta:hover{transform:translateY(-3px) rotate(-1deg);}
+
+  .collage{position:absolute; inset:0; pointer-events:none; z-index:1;}
+  .collage .piece{position:absolute; border-radius:2px;}
+  .piece-1{ /* large bloom cluster svg */
+    right:4%; top:8%; width:min(360px,38vw); transform:rotate(6deg);
+    filter:drop-shadow(0 18px 30px rgba(0,0,0,0.35));
+  }
+  .piece-2{ right:26%; top:44%; width:min(200px,22vw); transform:rotate(-8deg); filter:drop-shadow(0 12px 22px rgba(0,0,0,0.3));}
+  .piece-3{ right:8%; bottom:6%; width:min(240px,26vw); transform:rotate(3deg); filter:drop-shadow(0 12px 22px rgba(0,0,0,0.3));}
+  .tape{position:absolute; width:70px; height:22px; background:rgba(244,239,230,0.45); transform:rotate(-40deg);}
+  @media (max-width:760px){
+    .hero{min-height:auto; padding-bottom:46vw;}
+    .piece-1{right:-6%; top:auto; bottom:14vw; width:44vw;}
+    .piece-2{right:56%; top:auto; bottom:2vw; width:30vw;}
+    .piece-3{right:20%; bottom:-4vw; width:34vw;}
+  }
+
+  /* Overlap-stack sections: each section's card bleeds into the next */
+  section{padding:clamp(2.5rem,7vw,5rem) clamp(1.25rem,6vw,4rem); position:relative;}
+  .stack-card{
+    background:var(--krem-kagit); color:var(--murekkep);
+    border-radius:4px; padding:clamp(1.75rem,4vw,3rem);
+    max-width:880px; box-shadow:0 24px 48px -24px rgba(0,0,0,0.5);
+    position:relative; z-index:2;
+  }
+  .stack-card.offset-right{margin-left:auto; margin-top:-6rem;}
+  @media (max-width:760px){ .stack-card.offset-right{margin-top:-2rem;} }
+  .kicker{font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--toprak); margin:0 0 0.6rem;}
+  .stack-card .kicker{color:var(--toprak);}
+  h2{font-family:var(--font-display); font-weight:400; font-size:clamp(1.7rem,3.6vw,2.5rem); margin:0 0 0.75rem; line-height:1.1;}
+
+  /* Signature — annotated bouquet anatomy (AX49) */
+  .anatomy{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:2rem; align-items:center;}
+  @media (max-width:700px){ .anatomy{grid-template-columns:1fr;} }
+  .anatomy svg{width:100%; height:auto;}
+  .note-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:1rem;}
+  .note-list li{display:grid; grid-template-columns:34px 1fr; gap:0.9rem; align-items:start;}
+  .note-list .n{
+    width:30px; height:30px; border:2px solid var(--toprak); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; color:var(--toprak);
+  }
+  .note-list b{display:block;}
+  .note-list p{margin:0.15rem 0 0; font-size:0.9rem; opacity:0.75;}
+
+  /* Weekly fresh list — wrap-paper receipt */
+  .fresh-list{border-top:2px dashed var(--toprak); margin-top:1.5rem; padding-top:1.25rem;}
+  .fresh-row{display:flex; justify-content:space-between; align-items:baseline; gap:1rem; padding:0.5rem 0; border-bottom:1px dotted rgba(28,38,32,0.25); font-size:0.95rem;}
+  .fresh-row .name{font-weight:500;}
+  .fresh-row .origin{opacity:0.6; font-size:0.82rem;}
+  .fresh-row .price{font-family:var(--font-display); font-size:1.05rem;}
+
+  /* Sipariş */
+  .order-zone{background:var(--yaprak-koyu); margin-top:-4rem; padding-top:clamp(6rem,12vw,9rem);}
+  .order-inner{max-width:640px;}
+  form{display:flex; flex-direction:column; gap:1rem; margin-top:1.5rem;}
+  label{font-size:0.85rem; opacity:0.8;}
+  input, select{
+    background:rgba(244,239,230,0.08); border:1px solid rgba(244,239,230,0.3); color:var(--krem-kagit);
+    padding:0.8rem 1rem; border-radius:4px; font-family:var(--font-body); font-size:0.95rem; width:100%;
+  }
+  select option{color:var(--murekkep);}
+  button{
+    background:var(--petal-pembe); color:var(--murekkep); border:none; font-weight:700; font-size:0.95rem;
+    padding:0.95rem; border-radius:3px 18px 3px 18px; cursor:pointer; font-family:var(--font-body);
+  }
+
+  footer{padding:2rem clamp(1.25rem,6vw,4rem); display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.75rem; font-size:0.85rem; opacity:0.7; background:var(--yaprak-koyu);}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="#top">Menekşe</a>
+  <nav aria-label="Ana menü">
+    <ul>
+      <li><a href="#anatomi">Buket Anatomisi</a></li>
+      <li><a href="#taze">Bu Haftanın Listesi</a></li>
+      <li><a href="#siparis">Sipariş</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Giriş">
+    <p class="kicker" style="color:var(--petal-pembe)">Moda · Kadıköy · El Bağı Atölye</p>
+    <h1>Çiçek listesi<br>her Salı <em>pazardan</em><br>yeniden yazılır.</h1>
+    <p class="lede">Soğuk odamız yok, vitrinimiz küçük — o yüzden sadece o hafta ne güzelse onu bağlarız. Aynı gün Kadıköy içi teslim.</p>
+    <a class="cta" href="#siparis">Bu haftanın buketini iste</a>
+    <div class="collage" aria-hidden="true">
+      <svg class="piece piece-1" viewBox="0 0 200 240">
+        <rect x="88" y="90" width="24" height="140" rx="8" fill="#3d6b4f"/>
+        <circle cx="100" cy="70" r="52" fill="#E8A0B4"/>
+        <circle cx="100" cy="70" r="30" fill="#d4809a"/>
+        <circle cx="100" cy="70" r="12" fill="#F4EFE6"/>
+        <ellipse cx="62" cy="140" rx="26" ry="12" fill="#3d6b4f" transform="rotate(-30 62 140)"/>
+        <ellipse cx="140" cy="160" rx="26" ry="12" fill="#3d6b4f" transform="rotate(28 140 160)"/>
+      </svg>
+      <svg class="piece piece-2" viewBox="0 0 140 160">
+        <rect x="62" y="60" width="14" height="100" rx="6" fill="#3d6b4f"/>
+        <g fill="#c9b9e8">
+          <circle cx="70" cy="46" r="14"/><circle cx="48" cy="58" r="14"/><circle cx="92" cy="58" r="14"/><circle cx="58" cy="80" r="14"/><circle cx="82" cy="80" r="14"/>
+        </g>
+        <circle cx="70" cy="63" r="9" fill="#6B4A36"/>
+      </svg>
+      <svg class="piece piece-3" viewBox="0 0 160 180">
+        <rect x="18" y="70" width="124" height="104" rx="4" fill="#F4EFE6" transform="rotate(-3 80 122)"/>
+        <path d="M30 168 L80 84 L130 168 Z" fill="#E8A0B4" opacity="0.35" transform="rotate(-3 80 122)"/>
+        <text x="44" y="150" font-family="DM Serif Display, serif" font-size="15" fill="#1C2620" transform="rotate(-3 80 122)">bakım kartı</text>
+      </svg>
+      <span class="tape" style="right:30%; top:6%;"></span>
+      <span class="tape" style="right:6%; bottom:40%;"></span>
+    </div>
+  </section>
+
+  <section id="anatomi" aria-labelledby="anatomi-h">
+    <div class="stack-card">
+      <p class="kicker">İmza · El Bağı</p>
+      <h2 id="anatomi-h">Bir buketin anatomisi</h2>
+      <div class="anatomy">
+        <svg viewBox="0 0 220 260" aria-hidden="true">
+          <g stroke="#6B4A36" stroke-width="1" fill="none" opacity="0.7">
+            <line x1="60" y1="40" x2="118" y2="58"/><circle cx="56" cy="38" r="10" stroke-width="1.5"/>
+            <line x1="44" y1="130" x2="96" y2="128"/><circle cx="40" cy="130" r="10" stroke-width="1.5"/>
+            <line x1="52" y1="210" x2="106" y2="196"/><circle cx="48" cy="212" r="10" stroke-width="1.5"/>
+          </g>
+          <text x="52" y="42" font-size="9" fill="#6B4A36" text-anchor="middle">1</text>
+          <text x="36" y="134" font-size="9" fill="#6B4A36" text-anchor="middle">2</text>
+          <text x="44" y="216" font-size="9" fill="#6B4A36" text-anchor="middle">3</text>
+          <g>
+            <rect x="128" y="150" width="18" height="90" rx="6" fill="#3d6b4f"/>
+            <path d="M118 150 C112 120 122 96 137 84 C152 96 162 120 156 150 Z" fill="#E8A0B4"/>
+            <circle cx="137" cy="70" r="26" fill="#d4809a"/>
+            <circle cx="137" cy="70" r="10" fill="#F4EFE6"/>
+            <path d="M120 196 L156 188" stroke="#6B4A36" stroke-width="5" stroke-linecap="round"/>
+            <ellipse cx="110" cy="170" rx="22" ry="9" fill="#3d6b4f" transform="rotate(-35 110 170)"/>
+            <ellipse cx="166" cy="176" rx="22" ry="9" fill="#3d6b4f" transform="rotate(30 166 176)"/>
+          </g>
+        </svg>
+        <ul class="note-list">
+          <li><span class="n">1</span><span><b>Odak çiçek</b><p>Haftanın en iyi durumdaki çiçeği — bugünlerde şakayık. Buket onun etrafına kurulur.</p></span></li>
+          <li><span class="n">2</span><span><b>Spiral gövde</b><p>Saplar tek yönde spiral bağlanır; buket masaya kendi ayakta oturur, vazoda dağılmaz.</p></span></li>
+          <li><span class="n">3</span><span><b>Rafya düğümü</b><p>Bant değil rafya — açtığında iz bırakmaz, komposta gider.</p></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stack-card offset-right" id="taze">
+      <p class="kicker">Her Salı Güncellenir</p>
+      <h2>Bu haftanın taze listesi</h2>
+      <div class="fresh-list">
+        <div class="fresh-row"><span class="name">Şakayık <span class="origin">— Isparta</span></span><span class="price">₺95 / dal</span></div>
+        <div class="fresh-row"><span class="name">Leylak <span class="origin">— Yalova</span></span><span class="price">₺70 / demet</span></div>
+        <div class="fresh-row"><span class="name">Düğün çiçeği <span class="origin">— Antalya</span></span><span class="price">₺45 / demet</span></div>
+        <div class="fresh-row"><span class="name">Okaliptüs <span class="origin">— Muğla</span></span><span class="price">₺60 / demet</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="order-zone" id="siparis" aria-labelledby="siparis-h">
+    <div class="order-inner">
+      <p class="kicker" style="color:var(--petal-pembe)">Aynı Gün Teslim · Kadıköy İçi</p>
+      <h2 id="siparis-h">Buketini ısmarla</h2>
+      <p style="opacity:0.8; max-width:46ch;">Bütçeyi ve tonu söyle, listeden o hafta ne uygunsa onunla bağlayalım. 14:00'e kadar verilen sipariş aynı gün kapında.</p>
+      <form onsubmit="event.preventDefault(); this.reset(); alert('Sipariş alındı — kurye çıkınca haber veririz.');">
+        <div>
+          <label for="butce">Bütçe</label>
+          <select id="butce" required>
+            <option value="">Seç</option>
+            <option>₺350 — küçük el bağı</option>
+            <option>₺550 — orta buket</option>
+            <option>₺850 — bol odaklı büyük buket</option>
+          </select>
+        </div>
+        <div>
+          <label for="ton">Ton tercihi</label>
+          <select id="ton"><option>Fark etmez, güzelini bağla</option><option>Pembe-mor</option><option>Beyaz-yeşil</option><option>Sıcak turuncu-sarı</option></select>
+        </div>
+        <div>
+          <label for="tel">Telefon</label>
+          <input id="tel" type="tel" required>
+        </div>
+        <button type="submit">Bu haftanın buketini iste</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 Menekşe Çiçekçilik — Moda Cd. 118/A, Kadıköy</span>
+  <span>Salı–Pazar 10:00–19:00</span>
+</footer>
+
+</body>
+</html>
