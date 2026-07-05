@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kömür Kavurma Atölyesi — Ankara'da Tek Parti Kahve Kavurma</title>
+<meta name="description" content="Ankara Ayrancı'da tek parti (single-origin) kahve kavurma atölyesi. Yeşil çekirdekten fincana kadar süreç şeffaf, Cumartesi cupping seansları herkese açık.">
+<meta property="og:title" content="Kömür Kavurma Atölyesi">
+<meta property="og:description" content="Ankara'da tek parti kahve kavurma. Süreç şeffaf, Cumartesi cupping seansları açık.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#2B1B12">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "Kömür Kavurma Atölyesi",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Reşit Galip Cd. 41/3",
+    "addressLocality": "Ankara",
+    "addressRegion": "Çankaya",
+    "addressCountry": "TR"
+  },
+  "openingHours": "Sa 11:00-14:00",
+  "servesCuisine": "Coffee"
+}
+</script>
+<style>
+  :root{
+    /* Design DNA — Kömür Roastery */
+    --kavrulmus-toprak: #2B1B12;   /* roast-earth: base canvas, color of a spent roast drum */
+    --isli-kahve: #4A3226;         /* smoked-coffee: elevated surface */
+    --yanik-okra: #C97C3D;         /* burnt-ochre: structural accent, color of first-crack beans */
+    --kul-krema: #EDE3D3;          /* ash-cream: ink/text on dark */
+    --kor: #E2622B;                /* ember: hot accent, used once per view max */
+    --ink: #1A120C;
+
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Public Sans', sans-serif;
+
+    --ease-roast: cubic-bezier(0.22,1,0.36,1);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--kavrulmus-toprak);
+    color:var(--kul-krema);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  a{color:inherit;}
+  :focus-visible{outline:3px solid var(--kor); outline-offset:3px;}
+
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:1;
+    opacity:0.05; mix-blend-mode:overlay;
+  }
+
+  header{
+    position:sticky; top:0; z-index:10;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1.25rem clamp(1.25rem,5vw,3rem);
+    background:rgba(43,27,18,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(237,227,211,0.12);
+  }
+  .brand{display:flex; align-items:center; gap:0.6rem; font-family:var(--font-display); font-size:1.15rem; font-weight:600; text-decoration:none;}
+  .brand svg{width:28px; height:28px;}
+  nav ul{display:flex; gap:clamp(1rem,3vw,2rem); list-style:none; margin:0; padding:0; flex-wrap:wrap;}
+  nav a{text-decoration:none; font-size:0.92rem; color:var(--kul-krema); opacity:0.85; padding:0.3rem 0; border-bottom:2px solid transparent; transition:border-color 0.2s var(--ease-roast); white-space:nowrap;}
+  nav a:hover{border-color:var(--yanik-okra); opacity:1;}
+  @media (max-width:720px){
+    header{flex-wrap:wrap; row-gap:0.75rem;}
+    nav{width:100%;}
+    nav ul{gap:0.85rem; font-size:0.8rem;}
+  }
+
+  /* Hero: diagonal split, not centered-stack */
+  .hero{
+    position:relative;
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    min-height:88vh;
+    overflow:hidden;
+  }
+  .hero-copy{
+    padding:clamp(2rem,6vw,5rem);
+    display:flex; flex-direction:column; justify-content:center;
+    z-index:2;
+  }
+  .kicker{
+    font-family:var(--font-body); font-weight:600; letter-spacing:0.14em; text-transform:uppercase;
+    font-size:0.75rem; color:var(--yanik-okra); margin-bottom:1.25rem;
+  }
+  h1{
+    font-family:var(--font-display);
+    font-optical-sizing:auto;
+    font-weight:500;
+    font-size:clamp(2.4rem,5.4vw,4.4rem);
+    line-height:1.05;
+    margin:0 0 1.5rem;
+    max-width:14ch;
+  }
+  h1 em{font-style:italic; color:var(--yanik-okra);}
+  .hero-copy p{max-width:42ch; opacity:0.85; font-size:1.05rem; margin:0 0 2rem;}
+  .cta{
+    display:inline-flex; align-items:center; gap:0.6rem;
+    background:var(--kor); color:var(--ink); font-weight:600;
+    padding:0.9rem 1.6rem; border-radius:2px 14px 2px 14px;
+    text-decoration:none; width:fit-content;
+    box-shadow:0 8px 24px -8px rgba(226,98,43,0.5);
+    transition:transform 0.25s var(--ease-roast);
+  }
+  .cta:hover{transform:translateY(-2px);}
+
+  .hero-visual{
+    position:relative;
+    background:var(--isli-kahve);
+    clip-path:polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  .hero-visual svg{
+    position:absolute; inset:0; width:100%; height:100%;
+  }
+
+  section{padding:clamp(3rem,8vw,6rem) clamp(1.25rem,6vw,4rem);}
+  .section-head{max-width:60ch; margin-bottom:3rem;}
+  .section-head .kicker{margin-bottom:0.75rem;}
+  h2{font-family:var(--font-display); font-weight:500; font-size:clamp(1.8rem,3.4vw,2.6rem); margin:0 0 0.75rem; line-height:1.15;}
+  h2 + p{opacity:0.8; max-width:52ch;}
+
+  /* Process: diagonal alternating steps */
+  .process{display:flex; flex-direction:column; gap:clamp(2rem,5vw,3.5rem);}
+  .step{
+    display:grid; grid-template-columns: 90px 1fr; gap:1.5rem;
+    align-items:start;
+    max-width:52rem;
+  }
+  .step:nth-child(even){margin-left:auto; grid-template-columns: 1fr 90px;}
+  .step:nth-child(even) .step-num{order:2;}
+  .step-num{
+    font-family:var(--font-display); font-size:2.2rem; color:var(--yanik-okra); opacity:0.4;
+    line-height:1;
+  }
+  .step-body h3{font-family:var(--font-display); font-weight:500; font-size:1.3rem; margin:0 0 0.5rem;}
+  .step-body p{margin:0; opacity:0.78;}
+  .drum-fill{
+    width:100%; height:6px; background:rgba(237,227,211,0.12); border-radius:3px; margin-top:1rem; overflow:hidden;
+  }
+  .drum-fill span{
+    display:block; height:100%; width:0%; background:var(--kor);
+    transition:width 1.1s var(--ease-roast);
+  }
+  .step.in-view .drum-fill span{width:var(--fill,60%);}
+
+  /* Cupping notes — torn-card artifact */
+  .cupping-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem;}
+  .cupping-card{
+    background:var(--kul-krema); color:var(--ink);
+    padding:1.75rem;
+    clip-path: polygon(0% 2%, 3% 0%, 97% 0%, 100% 3%, 100% 97%, 97% 100%, 3% 100%, 0% 98%);
+    box-shadow:0 12px 30px -14px rgba(0,0,0,0.5);
+  }
+  .cupping-card .origin{font-family:var(--font-display); font-size:1.2rem; font-weight:600; margin:0 0 0.3rem;}
+  .cupping-card .meta{font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em; opacity:0.55; margin:0 0 1rem;}
+  .cupping-card .notes{font-style:italic; opacity:0.85; margin:0; border-top:1px dashed rgba(26,18,12,0.25); padding-top:0.85rem;}
+
+  /* Booking */
+  .booking{
+    background:var(--isli-kahve);
+    border-radius:2px 28px 2px 28px;
+    padding:clamp(2rem,5vw,3.5rem);
+    display:grid; grid-template-columns: 1fr 1fr; gap:3rem;
+  }
+  @media (max-width:800px){ .booking{grid-template-columns:1fr;} }
+  form{display:flex; flex-direction:column; gap:1rem;}
+  label{font-size:0.85rem; opacity:0.75;}
+  input{
+    background:rgba(237,227,211,0.06); border:1px solid rgba(237,227,211,0.25);
+    color:var(--kul-krema); padding:0.75rem 0.9rem; border-radius:6px; font-size:0.95rem;
+    font-family:var(--font-body);
+  }
+  input:focus-visible{border-color:var(--yanik-okra);}
+  button{
+    background:var(--kor); color:var(--ink); border:none; font-weight:600;
+    padding:0.9rem; border-radius:2px 14px 2px 14px; cursor:pointer; font-size:0.95rem;
+    font-family:var(--font-body);
+  }
+
+  footer{
+    padding:2.5rem clamp(1.25rem,6vw,4rem);
+    border-top:1px solid rgba(237,227,211,0.12);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem;
+    font-size:0.85rem; opacity:0.65;
+  }
+</style>
+</head>
+<body>
+
+<svg class="grain" aria-hidden="true">
+  <filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter>
+  <rect width="100%" height="100%" filter="url(#noise)"/>
+</svg>
+
+<header>
+  <a class="brand" href="#top">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    Kömür
+  </a>
+  <nav aria-label="Ana menü">
+    <ul>
+      <li><a href="#surec">Kavurma Süreci</a></li>
+      <li><a href="#cupping-notes">Kahveler</a></li>
+      <li><a href="#rezervasyon">Cupping Seansı</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Giriş">
+    <div class="hero-copy">
+      <p class="kicker">Ankara · Ayrancı · Tek Parti Kavurma</p>
+      <h1>Çekirdek yeşilken<br>gelir, <em>duman</em><br>tütünce kalır.</h1>
+      <p>Haftada üç parti kavuruyoruz, her partiyi kupa notuyla etiketliyoruz. İsterseniz kavurma günü atölyeye gelin, drumun içinden çekirdeği izleyin.</p>
+      <a class="cta" href="#rezervasyon">Cumartesi cupping'e yaz</a>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+        <rect width="400" height="500" fill="#4A3226"/>
+        <circle cx="230" cy="230" r="140" fill="none" stroke="#C97C3D" stroke-width="2" opacity="0.5"/>
+        <circle cx="230" cy="230" r="100" fill="none" stroke="#E2622B" stroke-width="1.5" opacity="0.4"/>
+        <path d="M90 230 A140 140 0 0 1 370 230" fill="none" stroke="#EDE3D3" stroke-width="1" opacity="0.3"/>
+        <g stroke="#EDE3D3" stroke-width="1" opacity="0.25">
+          <line x1="230" y1="90" x2="230" y2="370"/>
+          <line x1="90" y1="230" x2="370" y2="230"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section id="surec" aria-labelledby="surec-h">
+    <div class="section-head">
+      <p class="kicker">Süreç</p>
+      <h2 id="surec-h">Yeşil çekirdekten fincana</h2>
+      <p>Her adımı kayıt altına alıyoruz — kavurma eğrisi, ilk çıtırtı zamanı, soğutma süresi. Aşağıdaki çubuklar o partinin drum doluluk oranını gösterir.</p>
+    </div>
+    <div class="process">
+      <div class="step" style="--fill:35%">
+        <span class="step-num">01</span>
+        <div class="step-body">
+          <h3>Yeşil çekirdek kabulü</h3>
+          <p>Etiyopya, Kolombiya ve yerli üreticilerden gelen çekirdek, nem oranına göre ayrılır. Kusurlu tane elle ayıklanır.</p>
+          <div class="drum-fill" role="img" aria-label="Süreç aşama göstergesi, yüzde 35"><span></span></div>
+        </div>
+      </div>
+      <div class="step" style="--fill:65%">
+        <span class="step-num">02</span>
+        <div class="step-body">
+          <h3>Drum'da kavurma</h3>
+          <p>12 kiloluk drum'da ortalama 11 dakika. İlk çıtırtı 8. dakikada, kavurma seviyesi partiye göre 8-9. dakikada durdurulur.</p>
+          <div class="drum-fill" role="img" aria-label="Süreç aşama göstergesi, yüzde 65"><span></span></div>
+        </div>
+      </div>
+      <div class="step" style="--fill:100%">
+        <span class="step-num">03</span>
+        <div class="step-body">
+          <h3>Soğutma ve dinlendirme</h3>
+          <p>Soğutma tepsisinde 4 dakika, ardından paketlemeden önce 48 saat dinlendirme — CO2 çıkışı tamamlanır.</p>
+          <div class="drum-fill" role="img" aria-label="Süreç aşama göstergesi, yüzde 100"><span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cupping-notes" aria-labelledby="notes-h">
+    <div class="section-head">
+      <p class="kicker">Bu Haftaki Partiler</p>
+      <h2 id="notes-h">Kupa notları</h2>
+      <p>Her torbada kavurma tarihi ve kupa notu yazar. Not tutmayan kahveyi satmıyoruz.</p>
+    </div>
+    <div class="cupping-grid">
+      <article class="cupping-card">
+        <p class="origin">Yirgacheffe, Etiyopya</p>
+        <p class="meta">1.900m · Yıkanmış · Açık Kavurma</p>
+        <p class="notes">Bergamot, kuru çiçek, esmer şeker. İnce öğütüp V60'ta demleyin.</p>
+      </article>
+      <article class="cupping-card">
+        <p class="origin">Huila, Kolombiya</p>
+        <p class="meta">1.700m · Doğal Kurutma · Orta Kavurma</p>
+        <p class="notes">Çilek reçeli, kakao kabuğu, hafif fermente. Filtre kahve için önerilir.</p>
+      </article>
+      <article class="cupping-card">
+        <p class="origin">Posof, Türkiye</p>
+        <p class="meta">1.450m · Yıkanmış · Orta-Koyu Kavurma</p>
+        <p class="notes">Ceviz, karamelize şeker, düşük asidite. Espresso'da dengeli çıkar.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="rezervasyon" aria-labelledby="rez-h">
+    <div class="booking">
+      <div>
+        <p class="kicker">Cumartesi, 11:00</p>
+        <h2 id="rez-h">Cupping seansına katıl</h2>
+        <p>Haftalık kavurmanın üç kupasını birlikte tadıyoruz, kavurma günlüğünü açık paylaşıyoruz. 8 kişilik masa, ücretsiz.</p>
+      </div>
+      <form onsubmit="event.preventDefault(); this.reset(); alert('Kayıt alındı — Cumartesi 11:00\'de görüşürüz.');">
+        <div>
+          <label for="ad">Ad Soyad</label>
+          <input id="ad" name="ad" type="text" required>
+        </div>
+        <div>
+          <label for="eposta">E-posta</label>
+          <input id="eposta" name="eposta" type="email" required>
+        </div>
+        <button type="submit">Yerimi ayırt</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 Kömür Kavurma Atölyesi — Reşit Galip Cd. 41/3, Çankaya, Ankara</span>
+  <span>Cumartesi 11:00–14:00 açık cupping</span>
+</footer>
+
+<script>
+  const steps = document.querySelectorAll('.step');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+  }, { threshold: 0.4 });
+  steps.forEach(s => io.observe(s));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veriform — Gerçek Zamanlı Mutabakat İzleme Altyapısı</title>
+<meta name="description" content="Veriform, hazine ve ödeme operasyon ekipleri için gerçek zamanlı mutabakat (settlement) izleme altyapısı. Webhook tabanlı, saniyeler içinde entegre edilir.">
+<meta property="og:title" content="Veriform">
+<meta property="og:description" content="Gerçek zamanlı mutabakat izleme altyapısı — hazine ve ödeme ekipleri için.">
+<meta name="theme-color" content="#0F1417">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Veriform",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web"
+}
+</script>
+<style>
+  :root{
+    /* Design DNA — Veriform. BP27 conditional: dark theme justified — 7/24 izleme yapan
+       ops ekibi için, sidebar-anchored yerleşim + mono-teknik tip ile Linear/Vercel'in
+       ortalanmış pazarlama şemasından ayrışır. */
+    --gece-yarisi: #0F1417;   /* base */
+    --kat-2: #171E22;         /* elevation 2 */
+    --kat-3: #1E272C;         /* elevation 3 */
+    --sinyal-yesili: #C4FF4D; /* structural lime — the one saturated accent, used for live data only */
+    --kursun: #3A4750;        /* slate border */
+    --kagit: #E8EDEE;         /* text */
+    --kagit-dim: #8A98A0;
+
+    --font-mono:'JetBrains Mono',monospace;
+    --font-body:'IBM Plex Sans',sans-serif;
+    --sidebar-w: 240px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--gece-yarisi); color:var(--kagit);
+    font-family:var(--font-body); line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition-duration:0.001ms !important;} }
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--sinyal-yesili); outline-offset:2px;}
+  code, .mono{font-family:var(--font-mono);}
+
+  /* Sidebar-anchored skeleton — the deliberate break from centered-stack */
+  .sidebar{
+    position:fixed; top:0; left:0; bottom:0; width:var(--sidebar-w);
+    border-right:1px solid var(--kursun);
+    display:flex; flex-direction:column;
+    padding:1.5rem 1.25rem;
+    background:var(--gece-yarisi);
+    z-index:20;
+  }
+  .logo{display:flex; align-items:center; gap:0.6rem; text-decoration:none; margin-bottom:2.5rem;}
+  .logo svg{width:22px; height:22px;}
+  .logo span{font-family:var(--font-mono); font-weight:700; font-size:1rem; letter-spacing:-0.02em;}
+  .sidebar nav{display:flex; flex-direction:column; gap:0.35rem; flex:1;}
+  .sidebar nav a{
+    font-size:0.85rem; color:var(--kagit-dim); text-decoration:none; padding:0.55rem 0.6rem;
+    border-radius:2px; font-family:var(--font-mono);
+  }
+  .sidebar nav a:hover, .sidebar nav a.current{background:var(--kat-2); color:var(--kagit);}
+  .sidebar nav a.current{border-left:2px solid var(--sinyal-yesili); padding-left:calc(0.6rem - 2px);}
+  .sidebar .demo-btn{
+    margin-top:auto; background:var(--sinyal-yesili); color:var(--gece-yarisi); font-weight:700;
+    text-align:center; padding:0.7rem; border-radius:2px; text-decoration:none; font-size:0.85rem;
+    font-family:var(--font-mono);
+  }
+  .mobile-bar{display:none;}
+  @media (max-width:860px){
+    .sidebar{display:none;}
+    .mobile-bar{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:1rem 1.25rem; border-bottom:1px solid var(--kursun); position:sticky; top:0; background:var(--gece-yarisi); z-index:20;
+    }
+    .mobile-bar .logo{margin:0;}
+    :root{--sidebar-w:0px;}
+  }
+
+  main{margin-left:var(--sidebar-w); padding:0;}
+
+  .hero{
+    padding:clamp(3rem,7vw,6rem) clamp(1.5rem,5vw,4rem) 3rem;
+    border-bottom:1px solid var(--kursun);
+    background-image:
+      linear-gradient(var(--kursun) 1px, transparent 1px),
+      linear-gradient(90deg, var(--kursun) 1px, transparent 1px);
+    background-size: 64px 64px;
+    background-position: -1px -1px;
+    background-color:var(--gece-yarisi);
+    position:relative;
+  }
+  .hero::before{
+    content:''; position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, var(--gece-yarisi) 95%);
+  }
+  .hero-content{position:relative; max-width:780px;}
+  .status-pill{
+    display:inline-flex; align-items:center; gap:0.5rem; font-family:var(--font-mono); font-size:0.78rem;
+    color:var(--sinyal-yesili); border:1px solid var(--kursun); padding:0.35rem 0.75rem; border-radius:999px;
+    margin-bottom:1.5rem;
+  }
+  .status-pill .dot{width:7px; height:7px; border-radius:50%; background:var(--sinyal-yesili); animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+  h1{
+    font-size:clamp(2.2rem,4.8vw,3.6rem); line-height:1.08; font-weight:600; margin:0 0 1.25rem;
+    letter-spacing:-0.02em;
+  }
+  h1 .mono{color:var(--sinyal-yesili); font-weight:500;}
+  .hero p.lede{color:var(--kagit-dim); font-size:1.05rem; max-width:52ch; margin:0 0 2rem;}
+  .hero-ctas{display:flex; gap:1rem; margin-bottom:3rem; flex-wrap:wrap;}
+  .btn-primary{background:var(--sinyal-yesili); color:var(--gece-yarisi); font-weight:700; padding:0.85rem 1.5rem; border-radius:2px; text-decoration:none; font-family:var(--font-mono); font-size:0.9rem;}
+  .btn-ghost{border:1px solid var(--kursun); color:var(--kagit); padding:0.85rem 1.5rem; border-radius:2px; text-decoration:none; font-family:var(--font-mono); font-size:0.9rem;}
+
+  .stat-row{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--kursun); border:1px solid var(--kursun); max-width:640px;}
+  .stat-row div{background:var(--gece-yarisi); padding:1.1rem 1.25rem; min-width:0;}
+  .stat-row .num{font-family:var(--font-mono); font-size:1.6rem; font-weight:700; color:var(--kagit);}
+  .stat-row .label{font-size:0.75rem; color:var(--kagit-dim); margin-top:0.2rem;}
+  @media (max-width:480px){
+    .stat-row{grid-template-columns:1fr; max-width:100%;}
+  }
+
+  /* Live ticker — honest simulated real-time state, real timestamps */
+  .ticker-panel{
+    margin:clamp(1.5rem,4vw,3rem) clamp(1.5rem,5vw,4rem);
+    background:var(--kat-2); border:1px solid var(--kursun); border-radius:4px; overflow:hidden;
+  }
+  .ticker-head{display:flex; justify-content:space-between; align-items:center; padding:0.85rem 1.25rem; border-bottom:1px solid var(--kursun); font-family:var(--font-mono); font-size:0.78rem; color:var(--kagit-dim);}
+  .ticker-body{max-height:220px; overflow:hidden;}
+  .ticker-row{
+    display:grid; grid-template-columns:120px 1fr 100px 90px; gap:1rem; padding:0.6rem 1.25rem;
+    font-family:var(--font-mono); font-size:0.8rem; border-bottom:1px solid rgba(58,71,80,0.4);
+    animation: slidein 0.4s ease;
+  }
+  @keyframes slidein{from{opacity:0; transform:translateY(-6px);} to{opacity:1; transform:translateY(0);}}
+  .ticker-row .status-ok{color:var(--sinyal-yesili);}
+  .ticker-row .amount{text-align:right;}
+  .ticker-row .time{color:var(--kagit-dim);}
+  @media (max-width:640px){ .ticker-row{grid-template-columns:90px 1fr 70px; font-size:0.72rem;} .ticker-row .amount{display:none;} }
+
+  section{padding:clamp(2.5rem,6vw,4.5rem) clamp(1.5rem,5vw,4rem); border-bottom:1px solid var(--kursun);}
+  .section-head{max-width:60ch; margin-bottom:2.5rem;}
+  .eyebrow{font-family:var(--font-mono); font-size:0.78rem; color:var(--sinyal-yesili); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.6rem;}
+  h2{font-size:clamp(1.5rem,3vw,2.1rem); font-weight:600; margin:0 0 0.6rem; letter-spacing:-0.01em;}
+  .section-head p{color:var(--kagit-dim); margin:0;}
+
+  .ledger-steps{max-width:760px;}
+  .ledger-step{display:grid; grid-template-columns:50px 1fr; gap:1.25rem; padding:1.5rem 0; border-top:1px solid var(--kursun);}
+  .ledger-step:last-child{border-bottom:1px solid var(--kursun);}
+  .ledger-step .n{font-family:var(--font-mono); color:var(--sinyal-yesili); font-size:1.1rem;}
+  .ledger-step h3{margin:0 0 0.4rem; font-size:1.05rem; font-weight:600;}
+  .ledger-step p{margin:0; color:var(--kagit-dim); font-size:0.92rem;}
+
+  .code-block{
+    background:var(--kat-2); border:1px solid var(--kursun); border-radius:4px; padding:1.5rem;
+    font-family:var(--font-mono); font-size:0.82rem; color:var(--kagit); max-width:640px; width:100%; overflow-x:auto;
+  }
+  @media (max-width:480px){
+    .code-block{white-space:pre-wrap; word-break:break-word; font-size:0.76rem;}
+  }
+  .code-block .comment{color:var(--kagit-dim);}
+  .code-block .k{color:var(--sinyal-yesili);}
+
+  .cta-final{text-align:left; max-width:640px;}
+  .cta-final h2{margin-bottom:1rem;}
+  form.demo-form{display:flex; gap:0.75rem; flex-wrap:wrap;}
+  form.demo-form input{
+    flex:1; min-width:200px; background:var(--kat-2); border:1px solid var(--kursun); color:var(--kagit);
+    padding:0.8rem 1rem; border-radius:2px; font-family:var(--font-body); font-size:0.9rem;
+  }
+  form.demo-form input:focus-visible{border-color:var(--sinyal-yesili);}
+
+  footer{padding:2rem clamp(1.5rem,5vw,4rem); display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; font-family:var(--font-mono); font-size:0.78rem; color:var(--kagit-dim);}
+</style>
+</head>
+<body>
+
+<div class="mobile-bar">
+  <a class="logo" href="#top"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" stroke="#C4FF4D"/><rect x="14" y="3" width="7" height="7" stroke="#3A4750"/><rect x="3" y="14" width="7" height="7" stroke="#3A4750"/><rect x="14" y="14" width="7" height="7" stroke="#C4FF4D"/></svg><span class="mono">veriform</span></a>
+</div>
+
+<aside class="sidebar" aria-label="Ana menü">
+  <a class="logo" href="#top">
+    <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" stroke="#C4FF4D"/><rect x="14" y="3" width="7" height="7" stroke="#3A4750"/><rect x="3" y="14" width="7" height="7" stroke="#3A4750"/><rect x="14" y="14" width="7" height="7" stroke="#C4FF4D"/></svg>
+    <span>veriform</span>
+  </a>
+  <nav>
+    <a href="#top" class="current">genel-bakis</a>
+    <a href="#akis">mutabakat-akisi</a>
+    <a href="#entegrasyon">api</a>
+    <a href="#demo">fiyatlandirma</a>
+  </nav>
+  <a class="demo-btn" href="#demo">demo iste →</a>
+</aside>
+
+<main id="top">
+  <section class="hero" style="border-bottom:1px solid var(--kursun);">
+    <div class="hero-content">
+      <p class="status-pill"><span class="dot"></span> tüm bölgeler operasyonel</p>
+      <h1>Mutabakat farkını <span class="mono">saniyeler</span> içinde görün, günler içinde değil.</h1>
+      <p class="lede">Veriform, hazine ve ödeme operasyon ekipleri için webhook tabanlı gerçek zamanlı mutabakat izleme katmanı. Banka ekstresi ile defter kaydı arasındaki farkı otomatik yakalar.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#demo">Demo iste</a>
+        <a class="btn-ghost" href="#entegrasyon">Dokümantasyon</a>
+      </div>
+      <div class="stat-row">
+        <div><div class="num" data-count="118">0</div><div class="label">ms ortalama gecikme</div></div>
+        <div><div class="num" data-count="42">0</div><div class="label">entegre banka</div></div>
+        <div><div class="num" data-count="99" data-suffix=".97%">0</div><div class="label">uptime (12 ay)</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker-panel">
+    <div class="ticker-head">
+      <span>CANLI MUTABAKAT AKIŞI</span>
+      <span id="clock" class="mono"></span>
+    </div>
+    <div class="ticker-body" id="ticker-body" aria-live="off"></div>
+  </div>
+
+  <section id="akis">
+    <div class="section-head">
+      <p class="eyebrow">Nasıl çalışır</p>
+      <h2>Üç adımda mutabakat</h2>
+      <p>Gerçek bir sıra — atlamak veya birleştirmek işlemi bozar.</p>
+    </div>
+    <div class="ledger-steps">
+      <div class="ledger-step">
+        <span class="n">01</span>
+        <div><h3>Webhook bağlanır</h3><p>Banka ve PSP webhook'ları Veriform uç noktasına yönlendirilir, imza doğrulaması otomatik yapılır.</p></div>
+      </div>
+      <div class="ledger-step">
+        <span class="n">02</span>
+        <div><h3>Defter ile eşleştirilir</h3><p>Gelen her hareket, muhasebe defterindeki bekleyen kayıtla tutar ve referans numarasına göre eşleştirilir.</p></div>
+      </div>
+      <div class="ledger-step">
+        <span class="n">03</span>
+        <div><h3>Fark anlık işaretlenir</h3><p>Eşleşmeyen kayıt 30 saniye içinde ops ekibine düşer, kaynak banka ve tutar farkıyla birlikte.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="entegrasyon">
+    <div class="section-head">
+      <p class="eyebrow">Entegrasyon</p>
+      <h2>Tek uç nokta, tek webhook</h2>
+      <p>Ortalama entegrasyon süresi 40 dakika.</p>
+    </div>
+    <pre class="code-block"><code><span class="comment"># mutabakat kaydı gönder</span>
+curl -X POST <span class="k">https://api.veriform.io/v1/records</span> \
+  -H "Authorization: Bearer $VERIFORM_KEY" \
+  -d '{"reference":"TRX-88213","amount":184050,"currency":"TRY"}'</code></pre>
+  </section>
+
+  <section id="demo" class="cta-final">
+    <p class="eyebrow">Başlayın</p>
+    <h2>Ops ekibinizle 20 dakikalık demo</h2>
+    <form class="demo-form" onsubmit="event.preventDefault(); this.reset(); alert('Talep alındı, 1 iş günü içinde dönüş yapılır.');">
+      <input type="email" placeholder="kurumsal e-posta" required>
+      <button class="btn-primary" type="submit" style="border:none; font-family:var(--font-mono); cursor:pointer;">Gönder</button>
+    </form>
+  </section>
+</main>
+
+<footer style="margin-left:var(--sidebar-w);">
+  <span>© 2026 Veriform</span>
+  <span>İstanbul · Remote</span>
+</footer>
+
+<script>
+  // Count-up: one orchestrated entrance sequence, then still.
+  document.querySelectorAll('.num').forEach(el => {
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    let current = 0;
+    const step = Math.max(1, Math.round(target / 30));
+    const iv = setInterval(() => {
+      current += step;
+      if (current >= target) { current = target; clearInterval(iv); }
+      el.textContent = current + suffix;
+    }, 30);
+  });
+
+  // Honest simulated real-time ticker: real Date.now() timestamps, no fabricated identities.
+  const banks = ['Garanti BBVA','İş Bankası','Akbank','Yapı Kredi','QNB Finansbank','DenizBank'];
+  const body = document.getElementById('ticker-body');
+  function addRow(){
+    const bank = banks[Math.floor(Math.random()*banks.length)];
+    const amount = (Math.random()*90000+1000).toFixed(2);
+    const ref = 'TRX-' + Math.floor(10000+Math.random()*89999);
+    const row = document.createElement('div');
+    row.className = 'ticker-row';
+    row.innerHTML = `<span>${ref}</span><span>${bank}</span><span class="amount">₺${amount}</span><span class="status-ok">eşleşti</span>`;
+    body.prepend(row);
+    while (body.children.length > 6) body.removeChild(body.lastChild);
+  }
+  for(let i=0;i<4;i++) addRow();
+  setInterval(addRow, 3200);
+
+  function tickClock(){
+    document.getElementById('clock').textContent = new Date().toLocaleTimeString('tr-TR');
+  }
+  tickClock();
+  setInterval(tickClock, 1000);
+</script>
+
+</body>
+</html>

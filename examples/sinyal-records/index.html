@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sinyal Plak — İstanbul Bağımsız Plak Etiketi</title>
+<meta name="description" content="Sinyal Plak, İstanbul merkezli bağımsız plak etiketi. Anadolu psych ve elektronik crossover yayınlıyor, 12'' vinil basıyor.">
+<meta property="og:title" content="Sinyal Plak">
+<meta property="og:description" content="İstanbul bağımsız plak etiketi — Anadolu psych / elektronik crossover.">
+<meta name="theme-color" content="#14101F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Epilogue:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  "name": "Sinyal Plak",
+  "genre": ["Anatolian Psych", "Electronic"],
+  "location": { "@type": "Place", "address": "İstanbul, Türkiye" }
+}
+</script>
+<style>
+  :root{
+    /* Design DNA — Sinyal Plak */
+    --sinyal-sari: #E8FF3C;     /* signal-yellow: primary field */
+    --gece-mor: #14101F;        /* night-violet: base / second field */
+    --sicak-pembe: #FF3D7F;     /* hot-pink: structural accent */
+    --kagit: #F5F3EA;           /* sleeve-paper: print zone */
+    --murekkep: #0B0810;        /* ink: text on paper */
+
+    --font-display:'Anton',sans-serif;
+    --font-body:'Epilogue',sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--gece-mor); color:var(--kagit);
+    font-family:var(--font-body); line-height:1.6; -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition-duration:0.001ms !important;} }
+  a{color:inherit;}
+  :focus-visible{outline:3px solid var(--sicak-pembe); outline-offset:2px;}
+
+  header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1.4rem clamp(1.25rem,5vw,3rem);
+    position:sticky; top:0; z-index:20; background:var(--gece-mor);
+    border-bottom:3px solid var(--sinyal-sari);
+  }
+  .wordmark{font-family:var(--font-display); font-size:1.6rem; letter-spacing:0.02em; text-decoration:none; color:var(--sinyal-sari);}
+  nav ul{display:flex; gap:clamp(1rem,3vw,2.2rem); list-style:none; margin:0; padding:0;}
+  nav a{text-decoration:none; font-weight:700; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em;}
+  nav a:hover{color:var(--sicak-pembe);}
+  @media (max-width:700px){ nav ul{gap:0.9rem; font-size:0.7rem;} }
+
+  /* Hero: broken grid, diagonal color-block split, off-grid vinyl */
+  .hero{
+    position:relative; min-height:92vh; display:grid; place-items:center;
+    background:var(--sinyal-sari); color:var(--murekkep);
+    clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);
+    padding-bottom:8vh;
+  }
+  .hero-inner{
+    position:relative; width:min(1100px,92vw); display:grid; grid-template-columns: 1.3fr 0.9fr; gap:2rem; align-items:center;
+  }
+  .hero-copy{transform:rotate(-1.2deg); min-width:0;}
+  @media (max-width:760px){
+    .hero-inner{grid-template-columns:1fr; gap:2.5rem;}
+    .hero-copy{transform:none;}
+    .vinyl-wrap{transform:rotate(2deg); margin-top:1rem;}
+  }
+  .kicker{font-weight:800; letter-spacing:0.08em; text-transform:uppercase; font-size:0.8rem; margin-bottom:0.75rem; color:var(--sicak-pembe);}
+  h1{
+    font-family:var(--font-display); font-weight:400;
+    font-size:clamp(2.8rem,8vw,6rem); line-height:0.92; text-transform:uppercase;
+    margin:0 0 1.5rem;
+  }
+  .hero-copy p{max-width:36ch; font-weight:500; font-size:1.05rem; margin:0 0 1.75rem;}
+  .cta{
+    display:inline-block; background:var(--murekkep); color:var(--sinyal-sari);
+    font-weight:800; text-transform:uppercase; letter-spacing:0.04em; font-size:0.85rem;
+    padding:1rem 1.8rem; border-radius:999px; text-decoration:none;
+    transition:transform 0.2s ease;
+  }
+  .cta:hover{transform:scale(1.05) rotate(-1deg);}
+
+  .vinyl-wrap{position:relative; display:flex; justify-content:center; transform:rotate(4deg);}
+  .vinyl{width:min(280px,70vw); animation:spin 6s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .tonearm{position:absolute; top:-10%; right:8%; width:34%; transform-origin:top right; transform:rotate(18deg);}
+
+  #cursor-dot{
+    position:fixed; width:14px; height:14px; border-radius:50%; background:var(--sicak-pembe);
+    pointer-events:none; z-index:50; transform:translate(-50%,-50%); opacity:0; transition:opacity 0.2s;
+    mix-blend-mode:difference;
+  }
+  @media (hover:hover){ #cursor-dot.active{opacity:1;} }
+
+  section{padding:clamp(3rem,8vw,6rem) clamp(1.25rem,6vw,4rem);}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:1.5rem; flex-wrap:wrap; margin-bottom:3rem; max-width:1200px;}
+  h2{font-family:var(--font-display); font-weight:400; text-transform:uppercase; font-size:clamp(2rem,4.5vw,3rem); margin:0; line-height:0.95;}
+  .section-head p{max-width:32ch; opacity:0.75; margin:0; font-size:0.95rem;}
+
+  /* Release: ticket-stub artifact */
+  .release-ticket{
+    max-width:900px; margin:0 auto; background:var(--kagit); color:var(--murekkep);
+    display:grid; grid-template-columns:2fr 1fr; position:relative;
+    border-radius:4px; overflow:hidden;
+  }
+  .release-ticket::before{
+    content:''; position:absolute; top:0; bottom:0; left:66%;
+    width:0; border-left:3px dashed rgba(11,8,16,0.3);
+  }
+  @media (max-width:640px){
+    .release-ticket{grid-template-columns:1fr;}
+    .release-ticket::before{left:0; right:0; top:auto; bottom:auto; height:0; width:auto; border-left:none; border-top:3px dashed rgba(11,8,16,0.3);}
+  }
+  .ticket-main{padding:2.25rem;}
+  .ticket-stub{padding:2.25rem 1.5rem; background:rgba(11,8,16,0.04); display:flex; flex-direction:column; justify-content:space-between;}
+  .catalog{font-family:var(--font-display); font-size:0.85rem; letter-spacing:0.1em; color:var(--sicak-pembe);}
+  .release-ticket h3{font-family:var(--font-display); font-weight:400; text-transform:uppercase; font-size:2rem; margin:0.5rem 0;}
+  .release-ticket .artist{font-weight:700; opacity:0.7; margin:0 0 1rem;}
+  .waveform{display:flex; align-items:flex-end; gap:2px; height:40px; margin:1rem 0;}
+  .waveform span{flex:1; background:var(--sicak-pembe); opacity:0.7;}
+  .format-tag{display:inline-block; background:var(--murekkep); color:var(--kagit); font-size:0.72rem; font-weight:700; text-transform:uppercase; padding:0.35rem 0.7rem; border-radius:999px; letter-spacing:0.05em;}
+
+  /* Katalog: broken grid */
+  .catalog-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.75rem; max-width:1200px;}
+  .catalog-grid article{transform:rotate(var(--tilt,0deg));}
+  .catalog-grid article:nth-child(2){--tilt:1.5deg; margin-top:1.5rem;}
+  .catalog-grid article:nth-child(3){--tilt:-2deg;}
+  .catalog-grid article:nth-child(4){--tilt:1deg; margin-top:-1rem;}
+  .sleeve{
+    aspect-ratio:1; border-radius:2px; position:relative; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 16px 32px -16px rgba(0,0,0,0.6);
+    transition:transform 0.3s ease;
+  }
+  .catalog-grid article:hover .sleeve{transform:scale(1.03) rotate(-1deg);}
+  .catalog-grid h4{font-family:var(--font-display); font-weight:400; text-transform:uppercase; font-size:1.1rem; margin:0.9rem 0 0.15rem;}
+  .catalog-grid .artist{opacity:0.6; font-size:0.85rem; margin:0;}
+
+  /* Events: broken list, not infinite marquee */
+  .events{max-width:900px; display:flex; flex-direction:column;}
+  .event-row{
+    display:grid; grid-template-columns:100px 1fr auto; gap:1.5rem; align-items:center;
+    padding:1.1rem 0; border-bottom:1px solid rgba(245,243,234,0.15);
+  }
+  .event-row .date{font-family:var(--font-display); font-size:1.1rem; color:var(--sinyal-sari);}
+  .event-row .venue{font-weight:700;}
+  .event-row .city{opacity:0.6; font-size:0.85rem;}
+
+  footer{
+    padding:2.5rem clamp(1.25rem,6vw,4rem); border-top:3px solid var(--sinyal-sari);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; font-size:0.85rem; opacity:0.7;
+  }
+</style>
+</head>
+<body>
+
+<div id="cursor-dot" aria-hidden="true"></div>
+
+<header>
+  <a class="wordmark" href="#top">SİNYAL</a>
+  <nav aria-label="Ana menü">
+    <ul>
+      <li><a href="#cikis">Yeni Çıkış</a></li>
+      <li><a href="#katalog">Katalog</a></li>
+      <li><a href="#setler">Setler</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero" id="hero-section">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="kicker">Kat. No SNY-014 · 12'' Vinil</p>
+        <h1>Gece<br>frekansı<br>basılı</h1>
+        <p>İstanbul merkezli bağımsız etiket. Anadolu psych ile elektronik arasında kalan kaydı arıyoruz, 300 adet basıyoruz.</p>
+        <a class="cta" href="#cikis">Yeni çıkışı dinle</a>
+      </div>
+      <div class="vinyl-wrap" aria-hidden="true">
+        <svg class="vinyl" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="98" fill="#0B0810"/>
+          <circle cx="100" cy="100" r="80" fill="none" stroke="#2a2438" stroke-width="1"/>
+          <circle cx="100" cy="100" r="65" fill="none" stroke="#2a2438" stroke-width="1"/>
+          <circle cx="100" cy="100" r="50" fill="none" stroke="#2a2438" stroke-width="1"/>
+          <circle cx="100" cy="100" r="34" fill="#FF3D7F"/>
+          <circle cx="100" cy="100" r="4" fill="#14101F"/>
+        </svg>
+        <svg class="tonearm" viewBox="0 0 100 100" aria-hidden="true">
+          <line x1="90" y1="10" x2="20" y2="70" stroke="#0B0810" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="90" cy="10" r="8" fill="#0B0810"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="cikis">
+    <div class="section-head">
+      <div>
+        <p class="kicker" style="color:var(--sicak-pembe)">Bu Ay</p>
+        <h2>Yeni çıkış</h2>
+      </div>
+      <p>Her baskı sınırlı adet, tükenince tekrar basılmıyor.</p>
+    </div>
+    <div class="release-ticket">
+      <div class="ticket-main">
+        <p class="catalog">SNY-014</p>
+        <h3>Gece Frekansı</h3>
+        <p class="artist">Kolektif Sinyal</p>
+        <div class="waveform" aria-hidden="true"></div>
+        <span class="format-tag">12'' · 300 Adet</span>
+      </div>
+      <div class="ticket-stub">
+        <div>
+          <p class="catalog">Baskı</p>
+          <p style="font-weight:700; margin:0.25rem 0 0;">180g Ağır Plak</p>
+        </div>
+        <div>
+          <p class="catalog">Fiyat</p>
+          <p style="font-weight:700; margin:0.25rem 0 0;">450 TL</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="katalog">
+    <div class="section-head">
+      <div>
+        <p class="kicker" style="color:var(--sicak-pembe)">Arşiv</p>
+        <h2>Katalog</h2>
+      </div>
+      <p>SNY-001'den bugüne bastığımız her plak.</p>
+    </div>
+    <div class="catalog-grid">
+      <article>
+        <div class="sleeve" style="background:linear-gradient(135deg,#FF3D7F,#14101F);"></div>
+        <h4>Toz Bulutu</h4>
+        <p class="artist">Derin Kanal</p>
+      </article>
+      <article>
+        <div class="sleeve" style="background:linear-gradient(135deg,#E8FF3C,#0B0810 70%);"></div>
+        <h4>Anafor</h4>
+        <p class="artist">Yeraltı Treni</p>
+      </article>
+      <article>
+        <div class="sleeve" style="background:linear-gradient(160deg,#14101F,#FF3D7F 80%);"></div>
+        <h4>Sis Sahili</h4>
+        <p class="artist">Kolektif Sinyal</p>
+      </article>
+      <article>
+        <div class="sleeve" style="background:linear-gradient(200deg,#F5F3EA,#E8FF3C 60%);"></div>
+        <h4>Perde 7</h4>
+        <p class="artist">Derin Kanal</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="setler">
+    <div class="section-head">
+      <div>
+        <p class="kicker" style="color:var(--sicak-pembe)">Sahne</p>
+        <h2>Yaklaşan setler</h2>
+      </div>
+    </div>
+    <div class="events">
+      <div class="event-row">
+        <span class="date">14 Ağu</span>
+        <span class="venue">Sahne Kadıköy</span>
+        <span class="city">İstanbul</span>
+      </div>
+      <div class="event-row">
+        <span class="date">22 Ağu</span>
+        <span class="venue">Bomontiada Bahçe</span>
+        <span class="city">İstanbul</span>
+      </div>
+      <div class="event-row">
+        <span class="date">05 Eyl</span>
+        <span class="venue">Karga Bar</span>
+        <span class="city">Ankara</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 Sinyal Plak</span>
+  <span>İstanbul, Türkiye</span>
+</footer>
+
+<script>
+  const dot = document.getElementById('cursor-dot');
+  const hero = document.getElementById('hero-section');
+  if (window.matchMedia('(hover: hover)').matches) {
+    hero.addEventListener('mousemove', (e) => {
+      dot.style.left = e.clientX + 'px';
+      dot.style.top = e.clientY + 'px';
+      dot.classList.add('active');
+    });
+    hero.addEventListener('mouseleave', () => dot.classList.remove('active'));
+  }
+  document.querySelectorAll('.waveform').forEach(wf => {
+    for (let i = 0; i < 60; i++) {
+      const bar = document.createElement('span');
+      bar.style.height = (20 + Math.random() * 80) + '%';
+      wf.appendChild(bar);
+    }
+  });
+</script>
+
+</body>
+</html>
