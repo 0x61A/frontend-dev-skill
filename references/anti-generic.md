@@ -2,6 +2,18 @@
 
 Judging distinctiveness from inside the build always flatters: every individual choice already feels considered. The loop below is the outside view. **No build is done until it passes.**
 
+## Verification recipe — run at the end of phase 5, before any screenshot
+
+Field data: six consecutive builds each shipped a 375px horizontal-overflow bug that had to be found by hand. Run this before judging aesthetics.
+
+1. **Serve it.** Static build → `.claude/launch.json` entry (`npx --yes serve -l <port> <dir>`) + `preview_start`; framework build → its dev server. No preview tooling → `npx playwright screenshot --viewport-size=1280,800 <url> <out.png>` still works for captures.
+2. **Overflow check at 375px** (`preview_resize` to 375×812, then `preview_eval`):
+   - `document.documentElement.scrollWidth` — must be ≤ 375.
+   - Over? Find offenders: `[...document.querySelectorAll('body *')].filter(el => el.getBoundingClientRect().right > 376).map(el => el.tagName + '.' + el.className)`
+3. **Known culprits** (check these first): grid/flex children missing `min-width:0`; `pre`/`code` blocks without mobile `white-space:pre-wrap`; fixed-width stat rows / multi-column grids that never collapse; nav `ul` without `flex-wrap`; fixed `vw` font sizes instead of `clamp()`; absolutely-positioned decorations extending past the viewport.
+4. **Contrast by computed value**, not by eye: `preview_inspect` on body text and UI controls against their actual backgrounds — AA 4.5:1 body, 3:1 UI text.
+5. Only then screenshot for the aesthetic loop below.
+
 ## The loop
 
 1. **Render + screenshot.** Priority: Claude Preview (`preview_start` → `preview_screenshot`, plus `preview_inspect` for exact colors/fonts — screenshots lie about precise values); else Chrome MCP on the local URL; else `npx playwright screenshot`. Capture: desktop (1280+), mobile (375), and dark mode if the DNA includes one.
@@ -30,9 +42,17 @@ Check both, separately:
 - **Distinctive?** → 10-point test + competitor lineup.
 - **Sophisticated?** → Does it look like a studio made it, or a first draft afraid to commit? Real depth (imagery, layering, texture, shadow, considered type scale) or just flat shapes and gaps? Would a paying client see richness or "unfinished"? Restraint is deliberate and rich; flatness is absence.
 
-## Multi-page / multi-session rule
+## Multi-page / multi-session rule + the design log
 
-Sites built in one session drift into siblings: five sectors, five palettes, one identical skeleton — different skin, same skeleton, invisible from inside. Run the lineup check across your *own set* too: screenshot every page/site produced in the session side by side; near-identical section maps → vary the layout skeleton axis, not just the paint.
+Sites built in one session drift into siblings: five sectors, five palettes, one identical skeleton — different skin, same skeleton, invisible from inside. Run the lineup check across your *own set* too: screenshot every page/site produced in the session side by side; near-identical section maps **or near-identical hero compositions** → vary that axis, not just the paint.
+
+**The design log makes this persistent.** After a build passes this loop, append one row to `design-log.md` at the skill root:
+
+```
+| YYYY-MM-DD | <project> | <layout_skeleton> | <hero_composition> | <palette family> | <display font> | <signature element> |
+```
+
+Phase 3 reads this log before emitting any DNA (BP33: 2+ axis overlap → reroll). The log is why the Kömür/Sinyal failure (same diagonal-clip + disc hero in one session) can't silently recur across sessions.
 
 ## Quality floor (enforced silently, never announced as a feature)
 

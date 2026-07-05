@@ -55,3 +55,19 @@ AX53,imagery,"Illustration system: one consistent style, custom-feeling, never m
 AX54,imagery,"Type-only: no imagery, typography and color carry everything",studios|law|consultancies,products needing visual proof
 AX55,imagery,"Cut-out/collage: subjects isolated from backgrounds, layered with shapes",youth|culture|magazines,clinical/precise subjects
 AX56,imagery,Abstract generative/geometric art derived from brand geometry,fintech|data|dev-tools,human-touch subjects
+AX57,hero_composition,Diagonal/angled clip-path split with one large object anchoring the cut,bold consumer|music|food,any design-log entry already uses it — fastest-repeating composition (see BP32)
+AX58,hero_composition,Full-bleed typographic hero: display type IS the visual (no object or image),studios|agencies|type-led,image-led subjects with strong photography available
+AX59,hero_composition,Vertical split-screen: two equal panels with contrasting content types,portfolios|dual-audience products,mobile-majority audiences (collapse must be designed not defaulted)
+AX60,hero_composition,Framed/bordered stage: hero content inside a visible frame or border device,galleries|print-like|luxury,dense data products
+AX61,hero_composition,Masthead-editorial: newspaper/magazine head with rules and columns,editorial|archives|literary,app-like products
+AX62,hero_composition,Offset collage: several elements at deliberately broken positions with depth,youth|culture|fashion,trust-critical sectors
+AX63,hero_composition,Horizontal band stack: hero built from stacked full-width strips,events|schedules|programs,minimal-luxury directions
+AX64,hero_composition,Full-viewport visual with minimal overlaid text,travel|food|real estate,projects without strong source imagery
+AX65,hero_composition,Sidebar-anchored opening: fixed identity rail + scrolling content canvas,docs|dev-tools|catalogs,simple single-CTA landings
+AX66,hero_composition,Centered hero carrying the signature element itself (conditional — requires BP28 justification),when the signature genuinely lives in the hero,when it degenerates into the universal skeleton (BP10)
+AX67,signature,"Data-mural: one section where real subject data becomes a wall-sized graphic (roast curve, route topo, price ladder)",data-rich subjects,when no real data exists — never fake it
+AX68,signature,Letterform play built from the brand name's own characters (ligatures/cuts/stacking),strong wordmark brands,generic descriptive names
+AX69,imagery,"Archival/scanned artifacts as image layer (tickets, receipts, prints, stamps)",heritage|craft|zines,digital-native SaaS subjects
+AX70,imagery,Monochrome photography + single-color overlay zones,music|sports|architecture,products needing color-true imagery (food, fashion e-com)
+AX71,texture,Risograph/print-misregistration effect on graphic elements,indie|zines|culture,clinical or corporate trust pages
+AX72,motion,"Scroll-scrub sequence on one pinned hero element only (transform-only, reduced-motion fallback)",product stories|craft process,CWV-tight builds; reduced-motion-first audiences

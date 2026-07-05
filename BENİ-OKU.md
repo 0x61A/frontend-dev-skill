@@ -5,11 +5,12 @@ Genel yapay zeka frontend görünümünü kıran, her seferinde **benzersiz** ve
 ## Ne yapar?
 
 1. **Tasarım DNA'sı** — Her proje için sıfırdan: isimlendirilmiş renk paleti (4-6 hex), font çifti, layout iskeleti (ASCII wireframe ile), tek imza öğesi, motion seviyesi. Aynı brief'i iki kez versen iki farklı tasarım çıkar.
-2. **Yasaklı desen kontrolü** — Bilinen "AI işi" kalıpları (mor gradient hero, cream+terracotta, Inter başlık, emoji'li 3'lü kart grid'i, "Elevate your..." kopyası, her şeye fade-in-up...) 31 maddelik katalogda; DNA bu listeye takılırsa o eksen yeniden üretilir.
+2. **Yasaklı desen kontrolü** — Bilinen "AI işi" kalıpları (mor gradient hero, cream+terracotta, Inter başlık, emoji'li 3'lü kart grid'i, "Elevate your..." kopyası, her şeye fade-in-up...) 36 maddelik katalogda; DNA bu listeye takılırsa o eksen yeniden üretilir. Ayrıca **kalıcı design-log**: her geçen build kaydedilir, yeni DNA eski build'lerle 2+ eksende (iskelet, hero kompozisyonu, palet ailesi) çakışırsa o eksen yeniden atılır — oturumlar arası benzerlik de yakalanır.
 3. **Referans site analizi** — URL at ("şu siteye benzet"), skill görsel (screenshot/Chrome) + kod (WebFetch ile renk/font/spacing çıkarımı) analizi yapar, **Reference Design Brief** yazar. Asla kopyalamaz — ilke çıkarır, üstüne bilinçli fark ekler.
 4. **Komponent çek + dönüştür** — 21st.dev, shadcn/ui, Aceternity, Magic UI vb. 16 kaynaktan canlı kod çeker; ama her renk/font/radius/shadow projenin DNA token'larıyla yeniden yazılmadan asla commit edilmez.
 5. **Tam SEO** — Keyword araştırması (Semrush MCP bağlıysa gerçek veri, değilse WebSearch) sayfa mimarisinden ÖNCE yapılır; semantic HTML, meta/OG, JSON-LD schema, sitemap, robots.txt, Core Web Vitals bütçeleri (LCP<2.5s, CLS<0.1, INP<200ms) zorunlu.
-6. **Screenshot self-critique** — Build bitince screenshot alınır, 10 maddelik "bu AI işi mi?" testinden geçirilir; geçemezse ilgili eksen revize edilir. Mobil + desktop + (varsa) dark mode.
+6. **Screenshot self-critique** — Build bitince önce doğrulama reçetesi (375px taşma kontrolü + computed-value kontrast), sonra screenshot alınır, 10 maddelik "bu AI işi mi?" testinden geçirilir; geçemezse ilgili eksen revize edilir. Mobil + desktop + (varsa) dark mode. Geçen build design-log'a işlenir.
+7. **Çok sayfalı site + Türkçe mikrocopy** — Çok sayfada "kardeş sayfa" kuralları (tek token kaynağı, sayfa başına iskelet varyasyonu); Türkçe projelerde sektöre özgü CTA/form/hata metni bankası.
 
 ## Nasıl tetiklenir?
 
@@ -41,13 +42,16 @@ Genel yapay zeka frontend görünümünü kıran, her seferinde **benzersiz** ve
 | `references/design-dna.md` | DNA üretim süreci + DNA kartı formatı |
 | `references/anti-generic.md` | 10 maddelik AI-tell testi + critique döngüsü + kalite tabanı |
 | `references/reference-analysis.md` | Referans site analizi + brief şablonu |
-| `references/component-sourcing.md` | Çek + dönüştür kuralları |
+| `references/component-sourcing.md` | Çek + dönüştür kuralları + görsel kaynak rehberi (Unsplash/Pexels/Openverse + treatment reçeteleri) |
+| `references/multi-page.md` | Çok sayfalı site: tek DNA, kardeş sayfalar |
 | `references/seo-full.md` | Keyword → mimari → on-page → schema → CWV |
 | `references/stack-selection.md` | Stack karar ağacı |
-| `data/banned-patterns.md` | 31 yasaklı desen (HARD + CONDITIONAL) + geçme kriterleri |
-| `data/style-axes.csv` | 56 satırlık DNA stil matrisi ekseni |
-| `data/font-pairings.csv` | 46 karakterli font çifti (Inter/Roboto display yasak; Türkçe diyakritik notu dahil) |
-| `data/component-sources.csv` | 16 canlı komponent kaynağı + dönüşüm notları |
+| `data/banned-patterns.md` | 36 yasaklı desen (HARD + CONDITIONAL) + geçme kriterleri |
+| `data/style-axes.csv` | 72 satırlık DNA stil matrisi (hero_composition ekseni dahil) |
+| `data/font-pairings.csv` | 58 karakterli font çifti (Inter/Roboto display yasak; Türkçe diyakritik notu dahil) |
+| `data/component-sources.csv` | 20 canlı komponent kaynağı + dönüşüm notları |
+| `data/microcopy-tr.md` | Türkçe mikrocopy bankası (CTA/form/hata/ton) |
+| `design-log.md` | Kalıcı build kaydı — oturumlar arası benzerlik kontrolü |
 
 ## Notlar
 

@@ -2,8 +2,8 @@
 name: frontend-dev
 description: "FrontendDev — unique, SEO-complete frontend design and build skill that breaks the generic AI look. Every site gets a one-off Design DNA (named palette, type pair, layout concept, signature element) validated against a banned-pattern catalog of known AI tells, built with full SEO integration (keyword research via Semrush MCP or WebSearch fallback, semantic HTML, schema.org JSON-LD, sitemap, Core Web Vitals budgets), and verified through a screenshot self-critique loop. Analyzes user-supplied reference sites (visual + code token extraction into a Reference Design Brief) and sources real components from 21st.dev / shadcn/ui / Aceternity / Magic UI — always fetched live and re-skinned to the project DNA, never shipped as-is. Stack chosen per project (Next.js/React/Tailwind, plain HTML/CSS/JS, Vue/Nuxt, Astro). Triggers: unique frontend, distinctive design, landing page, marketing site, portfolio, benzersiz site, benzersiz tasarım, AI görünümü olmayan, yapay zeka gibi durmasın, referans site, bu siteye benzet, tasarım çek, 21st.dev, SEO uyumlu frontend, SEO uyumlu site."
 metadata:
-  version: "1.0.0"
-  last_updated: "2026-07-04"
+  version: "1.1.0"
+  last_updated: "2026-07-05"
 ---
 
 # FrontendDev — Unique, SEO-Complete Frontend Design & Build
@@ -15,7 +15,7 @@ Approach every brief as the design lead of a studio hired specifically because t
 ## Hard Rules (never skip)
 
 1. **No design work before a Design DNA exists.** Phase 3 output is mandatory for every build.
-2. **Every DNA is checked against `data/banned-patterns.md`** before code is written. Any hit → regenerate that axis.
+2. **Every DNA is checked against `data/banned-patterns.md` and `design-log.md`** before code is written. Any banned hit → regenerate that axis. 2+ axis overlap with a logged build (BP33) → reroll the overlap; after phase 6 passes, append the build to the log.
 3. **SEO research precedes page architecture.** Keywords decide page structure, headings, and URLs — not the other way around.
 4. **Fetched component code never ships as-is.** Every token (color/font/spacing/radius/shadow) is remapped to the project DNA; see `references/component-sourcing.md`.
 5. **No build is "done" until it passes the screenshot self-critique loop** in `references/anti-generic.md` (desktop + mobile, and dark mode if the DNA includes one).
@@ -28,10 +28,10 @@ Approach every brief as the design lead of a studio hired specifically because t
 |---|---|---|
 | 1. Brief intake | Pin down: concrete subject, sector, audience, the page's single job, reference URLs?, stack preference?, existing brand assets? Missing pieces → ask 2-4 batched questions (AskUserQuestion when available; otherwise state assumptions explicitly and proceed). | — |
 | 2. Reference analysis *(only if URLs given)* | Visual (screenshot/live inspect) + code (WebFetch HTML/CSS) token extraction → written **Reference Design Brief**. Multiple refs → find the shared thread, don't stitch. | `references/reference-analysis.md` |
-| 3. Design DNA | Roll the style matrix: palette (4-6 named hex), font pair, layout skeleton (ASCII wireframe), signature element, motion level, imagery treatment. Check against banned patterns. Same-brief-twice must diverge. | `references/design-dna.md` + `data/style-axes.csv` + `data/font-pairings.csv` + `data/banned-patterns.md` |
+| 3. Design DNA | Roll the style matrix: palette (4-6 named hex), font pair, layout skeleton (ASCII wireframe), hero composition, signature element, motion level, imagery treatment. Check against banned patterns + the design log. Same-brief-twice must diverge. | `references/design-dna.md` + `data/style-axes.csv` + `data/font-pairings.csv` + `data/banned-patterns.md` + `design-log.md` (+ `data/microcopy-tr.md` for Turkish copy) |
 | 4. SEO foundation | Keyword research (Semrush MCP → WebSearch fallback) → keyword map → page architecture, URL structure, heading plan, content plan, schema plan, CWV budgets. | `references/seo-full.md` |
-| 5. Build | Pick stack via decision tree. Write code from the DNA — every color/type/spacing decision derives from it. Components needed? Fetch live + transform. | `references/stack-selection.md`, `references/component-sourcing.md` + `data/component-sources.csv` |
-| 6. Self-critique loop | Screenshot (Claude Preview / Chrome MCP / Playwright) → score against the 10-point AI-tell test → below threshold: revise the failing axis, re-screenshot. Also run the two-bar check: distinctive AND sophisticated. | `references/anti-generic.md` |
+| 5. Build | Pick stack via decision tree. Write code from the DNA — every color/type/spacing decision derives from it. Components or imagery needed? Fetch live + transform. Multi-page → sibling-pages rules. | `references/stack-selection.md`, `references/component-sourcing.md` + `data/component-sources.csv`, `references/multi-page.md` (multi-page builds) |
+| 6. Self-critique loop | Verification recipe first (375px overflow + computed contrast), then screenshot (Claude Preview / Chrome MCP / Playwright) → score against the 10-point AI-tell test → below threshold: revise the failing axis, re-screenshot. Two-bar check: distinctive AND sophisticated. Pass → append to `design-log.md`. | `references/anti-generic.md` |
 
 Phases 2 and 4 can run in parallel thinking; everything else is sequential. For a redesign of an existing page, phase 1 additionally includes reading the current code and listing what survives.
 

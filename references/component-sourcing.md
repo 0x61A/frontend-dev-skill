@@ -44,3 +44,21 @@ A popular library's default look is by definition something many other sites alr
 
 ## AI generators (v0.dev, 21st.dev AI mode)
 Same pipeline, stricter: output is a first draft, not a deliverable. Full review + transform + a11y pass, and expect redundant state and missing aria attributes in generated code.
+
+## Imagery sourcing
+
+Same fetch-and-transform philosophy as components: an image may come from outside, but it never ships untreated.
+
+**Sources + license notes:**
+- **Unsplash** (unsplash.com) — free, no attribution required (appreciated); Unsplash License forbids reselling unmodified copies and compiling into a competing service.
+- **Pexels** (pexels.com) — free photos + video, no attribution required; identifiable-people-in-endorsement caveat applies.
+- **Openverse** (openverse.org) — CC-licensed aggregate; **check the per-image license** (some are CC BY / BY-SA → attribution or share-alike obligations).
+- Client work: confirm the license permits commercial use before shipping; log the source URL per image.
+
+**Mandatory treatment:** every image passes through the DNA's imagery treatment before it ships — raw stock is BP18. Concrete CSS recipes:
+- Duotone: `filter: grayscale(1) contrast(1.1)` + a `mix-blend-mode: multiply`/`screen` color overlay from the palette.
+- Grain: SVG `feTurbulence` overlay at low opacity (see any AX17 build).
+- Irregular masks: `clip-path` polygons or `mask-image` gradients derived from the DNA geometry.
+- Consistent grade: one shared `filter` custom property applied site-wide, never per-image tweaks.
+
+**AI-generated imagery:** allowed only as a last resort, always disclosed to the user, and only with the same consistent treatment applied — a raw AI render dropped into a page is the strongest AI-tell there is (BP18). Never fake photographic "proof" (team photos, premises, products that don't exist).

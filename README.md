@@ -14,12 +14,14 @@ This skill makes deviation systematic instead of accidental.
 
 | Capability | How |
 |---|---|
-| **Unique per project** | A Design DNA (named hex palette, type pair, layout skeleton as ASCII wireframe, one signature element, motion level) is generated before any code — seeded from the brand's letterforms, the sector's real-world materials, and an explicit anti-first-instinct rule. The same brief twice produces two different designs. |
-| **Never the "AI look"** | 31-entry [banned-pattern catalog](data/banned-patterns.md) (hard bans + conditional-with-justification) covering palettes, typography, layout skeletons, components, copywriting clichés (English *and* Turkish), and motion. Any hit regenerates that axis. |
+| **Unique per project** | A Design DNA (named hex palette, type pair, layout skeleton as ASCII wireframe, hero composition, one signature element, motion level) is generated before any code — seeded from the brand's letterforms, the sector's real-world materials, and an explicit anti-first-instinct rule. The same brief twice produces two different designs. |
+| **Never the "AI look"** | 36-entry [banned-pattern catalog](data/banned-patterns.md) (hard bans + conditional-with-justification) covering palettes, typography, layout skeletons, hero compositions, components, copywriting clichés (English *and* Turkish), and motion. Any hit regenerates that axis. |
+| **Never repeats itself** | An append-only [design log](design-log.md) records every shipped build's skeleton, hero composition, and palette family. A new DNA overlapping any logged build on 2+ of those axes is rerolled — cross-session sibling designs (the failure mode that motivated v1.1) can't silently recur. |
 | **Reference-site analysis** | Give it URLs ("make it feel like X") — it runs a visual pass (screenshots) *and* a code pass (HTML/CSS token extraction), writes a Reference Design Brief, and extracts principles, never pixels. A mandatory "deliberate divergence" line prevents clones. |
 | **Component sourcing** | Pulls real components live from 21st.dev, shadcn/ui, Aceternity, Magic UI and 12 more — then force-remaps every color/font/spacing/radius/shadow token onto the project DNA. Source code never ships as-is. |
 | **Full SEO integration** | Keyword research (Semrush MCP if connected, WebSearch fallback) runs *before* page architecture. Semantic HTML, meta/OG, schema.org JSON-LD, sitemap, robots.txt, and Core Web Vitals budgets (LCP < 2.5s, CLS < 0.1, INP < 200ms) are build inputs, not afterthoughts. |
-| **Screenshot self-critique** | After building: screenshot (desktop + mobile), score against a 10-point "is this AI work?" test plus a distinctive-vs-sophisticated two-bar check. Fails → revise the failing axis and re-shoot. |
+| **Screenshot self-critique** | After building: a concrete verification recipe first (375px overflow check with known-culprit list, computed-value contrast), then screenshot (desktop + mobile), score against a 10-point "is this AI work?" test plus a distinctive-vs-sophisticated two-bar check. Fails → revise the failing axis and re-shoot. |
+| **Multi-page & Turkish copy** | Sibling-pages rules for multi-page sites (one token source, per-page skeleton variation, breadcrumb/schema wiring) and a Turkish microcopy bank (sector-specific CTA verbs, form labels, error tone). |
 | **Adaptive stack** | Decision tree picks per project: plain HTML/CSS/JS, Astro, Next.js + Tailwind, or Nuxt. CSR-only SPAs are disqualified for anything that needs to rank. |
 
 ## Install
@@ -71,18 +73,21 @@ Six demos built end-to-end by the skill — same workflow, deliberately divergen
 ```
 SKILL.md                          entry point — hard rules, 6-phase workflow, routing
 BENİ-OKU.md                       Turkish user guide
+design-log.md                     append-only build registry (cross-session uniqueness check)
 references/
-  anti-generic.md                 10-point AI-tell test + critique loop + a11y quality floor
-  design-dna.md                   DNA generation process + DNA card format
+  anti-generic.md                 verification recipe + 10-point AI-tell test + critique loop + a11y quality floor
+  design-dna.md                   DNA generation process (incl. dark mode) + DNA card format
   reference-analysis.md           visual + code analysis of reference sites
-  component-sourcing.md           fetch-and-transform rules for component marketplaces
+  component-sourcing.md           fetch-and-transform rules + imagery sourcing (licenses, treatment recipes)
+  multi-page.md                   one DNA, sibling pages — multi-page site rules
   seo-full.md                     keyword research → architecture → on-page → schema → CWV
   stack-selection.md              per-project stack decision tree
 data/
-  banned-patterns.md              the 31-entry AI-look blocklist + pass criteria
-  style-axes.csv                  56 style-matrix axes (value scheme, geometry, texture, layout skeleton, signature types…)
-  font-pairings.csv               46 characterful pairings (no default-Inter displays; Turkish-diacritic-safe options included)
-  component-sources.csv           16 live component sources with transform notes
+  banned-patterns.md              the 36-entry AI-look blocklist + pass criteria
+  style-axes.csv                  72 style-matrix axes (value scheme, geometry, texture, layout skeleton, hero composition, signature types…)
+  font-pairings.csv               58 characterful pairings (no default-Inter displays; Turkish-diacritic-safe options included)
+  component-sources.csv           20 live component sources with transform notes
+  microcopy-tr.md                 Turkish microcopy bank (CTA verbs, form labels, error tone)
 commands/
   FrontendDev.md                  optional /FrontendDev slash command
 ```

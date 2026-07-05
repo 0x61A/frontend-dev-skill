@@ -38,13 +38,22 @@ Two tiers. **HARD** entries are banned unless the user explicitly asks for them 
 
 - BP21. Template marketing phrases: "Elevate your…", "Unlock the power of…", "Seamlessly…", "Empower your…", "Take your X to the next level", "Supercharge…", "Revolutionize…", "…made simple/easy", "All-in-one platform for…".
 - BP22. Feature-benefit triads that could describe any product in the category ("Fast. Secure. Reliable.").
-- BP23. Turkish equivalents: "…'i bir üst seviyeye taşıyın", "…'in gücünü keşfedin", "Hepsi bir arada", "Kusursuz deneyim".
+- BP23. Turkish equivalents: "…'i bir üst seviyeye taşıyın", "…'in gücünü keşfedin", "Hepsi bir arada", "Kusursuz deneyim", "Dijital dünyada yerinizi alın", "Fark yaratın", "Hayallerinizdeki…". (Good replacements: `data/microcopy-tr.md`.)
 
 ## HARD — Motion
 
 - BP24. Fade-in-up on scroll applied to every element uniformly.
 - BP25. Mixed animation vocabularies — components from different libraries with different easings/durations on one page.
 - BP26. Infinite marquee logo strip as the only motion on the page.
+
+## HARD — Composition Repeats (self-inflicted AI look)
+
+Field-tested failure: two same-session builds with different palettes, fonts and skeletons still read as siblings because both used a diagonal clip-path hero with one large circular object. Distinctiveness lives at the composition level too.
+
+- BP32. Diagonal/angled clip-path hero with a single large circular/disc object as the visual anchor — this exact cluster has already repeated in practice. Pick a different `hero_composition` axis option.
+- BP33. Emitting a DNA that matches any `design-log.md` row on **2 or more** of: `layout_skeleton`, `hero_composition`, palette family. Reroll the overlapping axes before emitting (see design-dna.md step 6).
+- BP34. Purple/indigo glow-orb, neon-gradient beam, or "AI aesthetic" luminous backdrop as the hero atmosphere.
+- BP35. Uniform card grid where every card does the identical tilt/lift/glow on hover as the page's only interaction idea.
 
 ## CONDITIONAL — allowed with written justification in the DNA card
 
@@ -53,6 +62,7 @@ Two tiers. **HARD** entries are banned unless the user explicitly asks for them 
 - BP29. Serif display + warm neutral base — allowed for editorial/craft/heritage subjects with a palette measurably distinct from BP01 (no `#F4F1E*` family, no terracotta default accent).
 - BP30. Border-radius = 0 everywhere — allowed for brutalist/industrial directions actually rooted in the subject.
 - BP31. Testimonial/logo sections — allowed with real (user-provided) names and marks; never fabricate logos or personas.
+- BP36. Spline/3D-blob or floating abstract 3D shapes as the hero visual — allowed only when the product itself is 3D/spatial (3D tools, games, hardware with real renders).
 
 ## Pass Criteria (checked in phase 3 and again in phase 6)
 
@@ -61,3 +71,4 @@ Two tiers. **HARD** entries are banned unless the user explicitly asks for them 
 3. Palette and type pairing each have a one-line sector-specific rationale that would not transfer to a different sector unchanged.
 4. At least one section breaks the centered-stack flow (asymmetry, bleed, scale contrast, color-block zoning, or broken grid).
 5. Copy names concrete things from the subject's world; no BP21/BP23 phrase survives.
+6. The DNA has been checked against `design-log.md` — no 2+ axis overlap with any prior build (BP33), and the log gains a row when phase 6 passes.
