@@ -40,6 +40,8 @@ cp frontend-dev-skill/commands/FrontendDev.md ~/.claude/commands/
 
 New Claude Code sessions pick the skill up automatically.
 
+> **Where /FrontendDev works:** personal commands under `~/.claude/commands` load only in Claude Code sessions on this machine (CLI, desktop app Code sessions, IDE extensions). claude.ai web, mobile, and regular Claude chat don't load them — there you'll get "isn't a recognized command here". Sessions opened *on this repository* (including claude.ai/code cloud) also get the command via the repo's own [`.claude/commands/FrontendDev.md`](.claude/commands/FrontendDev.md), which routes to the repo's `SKILL.md` directly.
+
 ## Usage
 
 Trigger it naturally:
